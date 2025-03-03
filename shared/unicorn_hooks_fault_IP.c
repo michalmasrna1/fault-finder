@@ -16,8 +16,27 @@ void do_the_IP_fault(uc_engine* uc, current_run_state_t* current_run_state,uint6
     uint64_t pc_value=0;
     uc_reg_read(uc,binary_file_details->my_pc_reg,&pc_value);       // read it
 
+    uint8_t* instruction_original=MY_STACK_ALLOC(sizeof(uint8_t)*(size+1));
+    uc_mem_read(uc,address,instruction_original,size);
+
     fprintf_output(current_run_state->file_fprintf, "Fault Address                  :  0x%" PRIx64 "\n",address);
     fprintf_output(current_run_state->file_fprintf, "Original IP                    :  0x%" PRIx64 "\n",pc_value);
+    fprintf_output(current_run_state->file_fprintf, "Skipped instruction           :  ");
+    for (int i=0;i<size;i++)
+    {
+        fprintf(current_run_state->file_fprintf,"%02x ",instruction_original[i]);
+    }
+
+    fault_rule_t *this_fault=&current_run_state->fault_rule;
+    if (current_run_state->display_disassembly && binary_file_details->my_cs_arch != MY_CS_ARCH_NONE)
+    {
+        // Can be turned off to save time - although I've not done the time calculations to see if it saves much time
+        disassemble_instruction_and_print(current_run_state->file_fprintf,instruction_original,size); 
+    }
+    else
+    {
+        fprintf(current_run_state->file_fprintf,"\n");
+    }
 
     //fault it
     pc_value=IP_fault_skip(current_run_state->fault_rule.operation, pc_value, size);
