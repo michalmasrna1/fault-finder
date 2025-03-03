@@ -21,7 +21,7 @@ void do_the_IP_fault(uc_engine* uc, current_run_state_t* current_run_state,uint6
 
     fprintf_output(current_run_state->file_fprintf, "Fault Address                  :  0x%" PRIx64 "\n",address);
     fprintf_output(current_run_state->file_fprintf, "Original IP                    :  0x%" PRIx64 "\n",pc_value);
-    fprintf_output(current_run_state->file_fprintf, "Skipped instruction           :  ");
+    fprintf_output(current_run_state->file_fprintf, "Skipped instruction            :  ");
     for (int i=0;i<size;i++)
     {
         fprintf(current_run_state->file_fprintf,"%02x ",instruction_original[i]);
