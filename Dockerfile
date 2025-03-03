@@ -32,6 +32,7 @@ COPY finder /usr/src/faultfinder/finder
 
 WORKDIR /usr/src/faultfinder
 
+# RUN make debug
 RUN make
 
 ENTRYPOINT ["./faultfinder"]
