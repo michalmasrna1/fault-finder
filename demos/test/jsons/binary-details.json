@@ -1,0 +1,42 @@
+{
+    "cpu" : "486",
+    "unicorn arch"          :"x86",
+    "unicorn mode"          :"64",
+    "capstone arch"         :"x86",
+    "capstone mode"         :"64",
+    "binary filename"       : "demos/test/bins/test.elf",
+    "memory address"        : "0x0000000",
+    "memory size"           : "0x0100000",
+    "other memory"  :
+    [
+        
+    ],
+    "code offset"   : "0x1000",
+    "stack address" : "0x8000000",
+    "stack size"    : "0x0001000",
+    "code start"    : "0x0129",
+    "code end"      : "0x014b",
+    "fault start"   : "0x0131",
+    "fault end"     : "0x014b",
+    "set memory"    : 
+    [
+    ],
+    "set registers"   :
+    [
+    ],
+    "outputs"    : 
+    [
+        {   
+            "location"      : "register",
+            "address"       : "",
+            "register"      : "eax",
+            "length"        : "64",
+            "offset"        : ""
+        }
+    ],
+    "skips":
+    [
+    ],
+    "timeout":"0",
+    "filter results": "no"
+}   
