@@ -6,7 +6,7 @@
     // #define PRINTINSTRUCTIONS    // DEBUGDEBUG - used for debugging when the output looks wrong.
     // #define SHOW_MALLOC          // DEBUGDEBUG - used to check memory management
     #define MY_STACK_ALLOC(s) alloca(s)
-    #define printf_debug(format, ...)  printf("\t\t\t\t\t\t\t\t >> Debug: " format, ## __VA_ARGS__)
+    #define printf_debug(format, ...)  printf("\t>> Debug: " format, ## __VA_ARGS__)
     
     #define printf_verbose(format, ...)  printf("verbose: " format, ## __VA_ARGS__)  //used for debuging 
 
