@@ -1,0 +1,153 @@
+{
+    "binary filename" : "demos/sca25519-ephemeral/bins/main.elf",
+    "cpu":"CORTEX_M4",
+    "unicorn arch"    :"arm",
+    "unicorn mode"    :"thumb",
+    "capstone arch"   :"arm",
+    "capstone mode"   :"thumb",
+    "memory address"  :"0x08000000",
+    "memory size"     :"0x00100000",
+    "other memory"    :
+    [
+        {
+            "address": "0x00000000",
+            "size"   : "0x00008000"
+        },
+        {
+            "address": "0x20000000",
+            "size"   : "0x00008000"
+        },
+        {
+            "address": "0x50000000",
+            "size"   : "0x00080000"
+        }
+    ],
+    "stack address" : "0x08100000",
+    "stack size"    : "0x00100000",
+    "code offset"   : "0x00010000",
+    "code start"    : "0x000001ad",
+    "code end"      : "0x000001bc",
+    "fault start"   : "0x0000165c",
+    "fault end"     : "0x00001676",
+    "set memory"    : 
+    [
+    ],
+    "set registers"   :
+    [
+    ],
+    "outputs"    : 
+    [
+        // {   
+        //     "location"      : "fixed address",
+        //     "address"       : "0x081ffd00",
+        //     "length"        : "0x00000300",
+        //     "offset"        : ""
+        // },
+        {   
+            "location"      : "fixed address",
+            "address"       : "0x81fffd8",
+            "length"        : "0x20",
+            "offset"        : ""
+        }
+        // {   
+        //     "location"      : "fixed address",
+        //     "address"       : "0x81fff88",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {   
+        //     "location"      : "fixed address",
+        //     "address"       : "0x080031c8",
+        //     "length"        : "0x00000020",
+        //     "offset"        : ""
+        // },
+        // {   
+        //     "location"      : "fixed address",
+        //     "address"       : "0x800a3b4",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R0",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R1",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R2",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R3",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R4",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R5",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R6",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R7",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "R8",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // },
+        // {
+        //     "location"      : "register",
+        //     "register"      : "sp",
+        //     "length"        : "0x20",
+        //     "offset"        : ""
+        // }
+    ],
+    "skips":
+    [
+        // skipping calls to random_bytes() until I figure out how to set it up
+        { 
+            "address"       : "0x15fe",
+            "bytes"         : "0x4"
+        },
+        { 
+            "address"       : "0x1658",
+            "bytes"         : "0x4"
+        },
+        { 
+            "address"       : "0x16f6",
+            "bytes"         : "0x4"
+        },
+        { 
+            "address"       : "0x173a",
+            "bytes"         : "0x4"
+        }
+    ],
+    "timeout":"0",
+    "filter results": "no"
+}   
