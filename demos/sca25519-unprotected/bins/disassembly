@@ -1,5 +1,5 @@
 
-demos/sca25519/bins/main.elf:     file format elf32-littlearm
+../../fault-finder/demos/sca25519/bins/main.elf:     file format elf32-littlearm
 
 
 Disassembly of section .text:
@@ -1399,7 +1399,7 @@ Disassembly of section .text:
  800128c:	4640      	mov	r0, r8
  800128e:	a91c      	add	r1, sp, #112	; 0x70
  8001290:	f000 f8da 	bl	8001448 <fe25519_pack>
- 8001294:	2000      	movs	r0, #0
+ 8001294:	4640      	mov	r0, r8
  8001296:	b04e      	add	sp, #312	; 0x138
  8001298:	e8bd 87f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
 

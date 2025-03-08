@@ -1,5 +1,5 @@
 {
-    "binary filename" : "demos/sca25519/bins/main.elf",
+    "binary filename" : "demos/sca25519-unprotected/bins/main.elf",
     "cpu":"CORTEX_M4",
     "unicorn arch"    :"arm",
     "unicorn mode"    :"thumb",

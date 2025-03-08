@@ -1,5 +1,5 @@
 {
-    "binary json filename"  : "demos/sca25519/jsons/binary-details.json",
+    "binary json filename"  : "demos/sca25519-unprotected/jsons/binary-details.json",
     "mode"                  : "goldenrun_full",
     "output directory name" : "stdout",
     "threads"               : "notused",

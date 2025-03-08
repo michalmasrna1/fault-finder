@@ -1,9 +1,9 @@
 {
-    "binary json filename"  : "demos/sca25519/jsons/binary-details.json",
+    "binary json filename"  : "demos/sca25519-unprotected/jsons/binary-details.json",
     "mode"                  : "fault",
-    "output directory name" : "demos/sca25519/outputs/",
+    "output directory name" : "demos/sca25519-unprotected/outputs/",
     "threads"               : "1",
-    "fault model filename"  : "demos/sca25519/faultmodels/sca25519.txt",
+    "fault model filename"  : "demos/sca25519-unprotected/faultmodels/sca25519-unprotected.txt",
     "checkpoints"           : "no",
     "number of checkpoints" : "notused",
     "equivalents"           : "no",
