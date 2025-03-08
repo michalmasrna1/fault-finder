@@ -66,61 +66,61 @@
         // {
         //     "location"      : "register",
         //     "register"      : "R0",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R1",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R2",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R3",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R4",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R5",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R6",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R7",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "R8",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // },
         // {
         //     "location"      : "register",
         //     "register"      : "sp",
-        //     "length"        : "0x10",
+        //     "length"        : "0x20",
         //     "offset"        : ""
         // }
     ],
