@@ -44,8 +44,13 @@ void do_the_IP_fault(uc_engine* uc, current_run_state_t* current_run_state,uint6
     uc_reg_write(uc,binary_file_details->my_pc_reg,&pc_value);      // write it
     fprintf_output(current_run_state->file_fprintf, "Updated IP                     :  0x%" PRIx64 "\n",pc_value);
 
-    // set the address where this fault occurred
-    current_run_state->fault_rule.faulted_address=address;
+    if (current_run_state->run_state != FAULTED_rs)
+    {
+        // set the address where this fault occurred
+        // this function might be called repeatedly if we skip multiple instructions,
+        // we set the faulted address only for the first instruction.
+        current_run_state->fault_rule.faulted_address=address;
+    }
 
     // we've done the fault - so set faulting_mode to faulted!!
     current_run_state->run_state=FAULTED_rs;
@@ -103,7 +108,12 @@ void hook_code_fault_it_IP(uc_engine *uc, uint64_t address, uint64_t size, void 
         // only fault the specific instruction
         return;
     }
-    do_the_IP_fault(uc, current_run_state,address,size);
+
+    for (uint64_t i = 0; i < current_run_state->fault_rule.mask; i++) {
+        do_the_IP_fault(uc, current_run_state,address,size);
+        address = address + size;
+        // TODO: Update the size
+    }
 
     // Check for equivalences
     if (current_run_state->stop_on_equivalence)

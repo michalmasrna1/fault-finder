@@ -882,13 +882,16 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
                                     // LOOPING THROUGH OPERATIONS
                                     while (current_operation_fault != NULL)
                                     {
-                                        current_run_state->fault_rule.number=0; // Not relevant
-                                        current_run_state->fault_rule.opcode_filter_fault=current_opcode_filter_fault->string;
-                                        current_run_state->fault_rule.lifespan=current_lifespan_fault->lifespan;
-                                        current_run_state->fault_rule.operation=current_operation_fault->operation;
-                                        current_run_state->fault_rule.mask=0; // Not relevant
-                                        get_on_with_it(code_buffer, code_buffer_size, current_run_state);
-
+                                        // LOOPING THROUGH MASKS
+                                        for (uint64_t mask_counter=0; mask_counter < current_operation_fault->mask_count; mask_counter++)
+                                        {
+                                            current_run_state->fault_rule.number=0; // Not relevant
+                                            current_run_state->fault_rule.opcode_filter_fault=current_opcode_filter_fault->string;
+                                            current_run_state->fault_rule.lifespan=current_lifespan_fault->lifespan;
+                                            current_run_state->fault_rule.operation=current_operation_fault->operation;
+                                            current_run_state->fault_rule.mask=current_operation_fault->masks[mask_counter]; // Interpreted as number of instructions to skip
+                                            get_on_with_it(code_buffer, code_buffer_size, current_run_state);
+                                        }
                                         current_operation_fault=current_operation_fault->next;
                                     }
                                     current_lifespan_fault=current_lifespan_fault->next;

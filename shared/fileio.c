@@ -589,6 +589,11 @@ run_list_t *parse(const char *filename)
             }
         }
     }
+    // Very hacky, turn to a loop
+    if (run_list->instruction_range_fault->target_fault_head->opcode_filter_fault_head->lifespan_head->operation_fault_head->operation == eSKIP_op && run_list->instruction_range_fault->target_fault_head->opcode_filter_fault_head->lifespan_head->operation_fault_head->mask_count == 0)
+    {
+        run_list->instruction_range_fault->target_fault_head->opcode_filter_fault_head->lifespan_head->operation_fault_head->mask_count = get_masks_from_line("1", &(run_list->instruction_range_fault->target_fault_head->opcode_filter_fault_head->lifespan_head->operation_fault_head->masks));
+    }
     return run_list;
 }
 
