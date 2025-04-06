@@ -23,8 +23,8 @@
     "code offset"   : "0x00010000",
     "code start"    : "0x000001ad",
     "code end"      : "0x000001b8",
-    "fault start"   : "0x00000bb6",
-    "fault end"     : "0x00000bcc",
+    "fault start"   : "0x000001b0",
+    "fault end"     : "0x000001b8",
     "set memory"    : 
     [
     ],
