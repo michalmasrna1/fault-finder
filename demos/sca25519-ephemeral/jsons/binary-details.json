@@ -26,9 +26,9 @@
     "stack size"    : "0x00100000",
     "code offset"   : "0x00010000",
     "code start"    : "0x000001ad",
-    "code end"      : "0x000001bc",
-    "fault start"   : "0x0000165c",
-    "fault end"     : "0x00001676",
+    "code end"      : "0x000001b8",
+    "fault start"   : "0x000001b4",
+    "fault end"     : "0x000001b8",
     "set memory"    : 
     [
     ],
@@ -128,26 +128,7 @@
         //     "offset"        : ""
         // }
     ],
-    "skips":
-    [
-        // skipping calls to random_bytes() until I figure out how to set it up
-        { 
-            "address"       : "0x15fe",
-            "bytes"         : "0x4"
-        },
-        { 
-            "address"       : "0x1658",
-            "bytes"         : "0x4"
-        },
-        { 
-            "address"       : "0x16f6",
-            "bytes"         : "0x4"
-        },
-        { 
-            "address"       : "0x173a",
-            "bytes"         : "0x4"
-        }
-    ],
+    "skips": [],
     "timeout":"0",
     "filter results": "no"
 }   
