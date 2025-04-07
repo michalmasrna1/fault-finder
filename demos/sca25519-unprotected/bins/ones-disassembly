@@ -1,5 +1,5 @@
 
-../../fault-finder/demos/sca25519-unprotected/bins/main.elf:     file format elf32-littlearm
+../../fault-finder/demos/sca25519-unprotected/bins/ones.elf:     file format elf32-littlearm
 
 
 Disassembly of section .text:
@@ -4471,8 +4471,8 @@ Disassembly of section .text:
  80033a4:	40007000 	.word	0x40007000
 
 080033a8 <unprotected_key>:
- 80033a8:	ba746580 58cd6261 47593049 b6351636     .et.ab.XI0YG6.5.
- 80033b8:	7a7c7de7 c038de83 c9b87480 430ad48f     .}|z..8..t.....C
+ 80033a8:	ffffffff ffffffff ffffffff ffffffff     ................
+ 80033b8:	ffffffff ffffffff ffffffff ffffffff     ................
 
 080033c8 <benchmarkclock>:
  80033c8:	00c00008 01000408 00000600 00000400     ................
