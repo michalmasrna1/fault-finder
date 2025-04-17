@@ -28,14 +28,14 @@ void print_run_file_details(const run_details_t* run_details)
     if (run_details->run_mode == eFAULT_rm)
     {
         printf_output("Output directory Name:  %s\n",run_details->directory_name);
-        printf_output("Threads:                %llu\n",run_details->threads_num);
+        printf_output("Threads:                %lu\n",run_details->threads_num);
         printf_output("fault model filename :  %s\n",run_details->fault_model_filename);
         printf_output("Start from checkpoint:  %s\n",run_details->start_from_checkpoint == 1 ? "Yes" : "No");
         if (run_details->start_from_checkpoint == 1)
         {
-            printf_output("Checkpoints:            %llu\n",run_details->total_num_checkpoints);
+            printf_output("Checkpoints:            %lu\n",run_details->total_num_checkpoints);
         }
-        printf_output("Max instructions:       %llu\n",run_details->max_instructions);
+        printf_output("Max instructions:       %lu\n",run_details->max_instructions);
         printf_output("Stop on equivalence:    %s\n",run_details->stop_on_equivalence == 1 ? "Yes" : "No");
         printf_output("Time it:                %s\n",run_details->timeit == 1 ? "Yes" : "No");
         printf_output("Display disassembly:    %s\n",run_details->display_disassembly == 1 ? "Yes" : "No");

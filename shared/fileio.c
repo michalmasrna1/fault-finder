@@ -16,7 +16,7 @@
 
 void print_equivalence_list(current_run_state_t *current_run_state, uint64_t instruction)
 {
-    fprintf(current_run_state->file_fprintf, "****** Equivalence faults for instruction: %llu ******\n", instruction);
+    fprintf(current_run_state->file_fprintf, "****** Equivalence faults for instruction: %lu ******\n", instruction);
     for (uint64_t i = 0; i < current_run_state->equivalence_count; i++)
     {
         if (current_run_state->equivalences[i].fault_count > 1)
@@ -601,7 +601,7 @@ void print_run_list(const run_list_t *run_list)
     while (current_instruction_range_fault != NULL)
     {
         // FAULTS
-        fprintf(f, "Fault: %llu-%llu\n", current_instruction_range_fault->instruction_start, current_instruction_range_fault->instruction_end);
+        fprintf(f, "Fault: %lu-%lu\n", current_instruction_range_fault->instruction_start, current_instruction_range_fault->instruction_end);
 
         target_fault_t *current_target_fault = current_instruction_range_fault->target_fault_head;
         while (current_target_fault != NULL)
@@ -642,7 +642,7 @@ void print_run_list(const run_list_t *run_list)
                 while (current_lifespan_fault != NULL)
                 {
                     // FAULT LIFECYCLE
-                    fprintf(f, "\tLifespan: %llu ", current_lifespan_fault->lifespan.count);
+                    fprintf(f, "\tLifespan: %lu ", current_lifespan_fault->lifespan.count);
                     if (current_lifespan_fault->lifespan.count > 0)
                     {
                         fprintf(f, "Mode: %s", lifespan_mode_to_string(current_lifespan_fault->lifespan.mode));
@@ -658,7 +658,7 @@ void print_run_list(const run_list_t *run_list)
                         fprintf(f, "\t\t");
                         for (uint64_t temp_num = 0; temp_num < current_operation->mask_count; temp_num++)
                         {
-                            fprintf(f, "0x%08llx ", current_operation->masks[temp_num]);
+                            fprintf(f, "0x%08lx ", current_operation->masks[temp_num]);
                         }
                         fprintf(f, "\n");
                         current_operation = current_operation->next;

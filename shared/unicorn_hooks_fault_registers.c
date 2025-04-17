@@ -23,7 +23,7 @@ void do_the_register_fault(uc_engine* uc, current_run_state_t* current_run_state
     //read it
     thing_to_fault=uc_reg_from_int(this_fault->number);
     uc_reg_read(uc, thing_to_fault, &original_val);
-    fprintf_output(current_run_state->file_fprintf, "Original register           : 0x%016llx \n", original_val);
+    fprintf_output(current_run_state->file_fprintf, "Original register           : 0x%016lx \n", original_val);
     fprintf_output(current_run_state->file_fprintf, "Mask                        : 0x%016" PRIx64 "\n", this_fault->mask);
 
     //fault it
@@ -32,7 +32,7 @@ void do_the_register_fault(uc_engine* uc, current_run_state_t* current_run_state
     this_fault->lifespan.original_target_value=original_val;
     // write it back (reg/instruction pointer all work the same)
     uc_reg_write(uc, thing_to_fault, &new_val);
-    fprintf_output(current_run_state->file_fprintf, "Updated                     : 0x%016llx\n", new_val);
+    fprintf_output(current_run_state->file_fprintf, "Updated                     : 0x%016lx\n", new_val);
 }
 
 void hook_code_fault_it_register(uc_engine *uc, uint64_t address, uint64_t size, void *user_data)
@@ -98,7 +98,7 @@ void hook_lifespan_revert_register(uc_engine *uc, uint64_t address, uint64_t siz
         // The lifespan starts AFTER the faulted address.
         return;
     }
-    fprintf_output(current_run_state->file_fprintf,"Lifespan revert countdown: %llu. (0x%" PRIx64 ")\n",this_fault->lifespan.count,address);
+    fprintf_output(current_run_state->file_fprintf,"Lifespan revert countdown: %lu. (0x%" PRIx64 ")\n",this_fault->lifespan.count,address);
     this_fault->lifespan.live_counter--; 
     if (this_fault->lifespan.live_counter != 0)
         return;
@@ -112,14 +112,14 @@ void hook_lifespan_revert_register(uc_engine *uc, uint64_t address, uint64_t siz
         case reg_ft:
             //read it
             thing_to_fault=this_fault->number;
-            fprintf_output(current_run_state->file_fprintf, "Reverting register (%s)        : 0x%016llx \n", register_name_from_int(thing_to_fault), value_to_revert);
+            fprintf_output(current_run_state->file_fprintf, "Reverting register (%s)        : 0x%016lx \n", register_name_from_int(thing_to_fault), value_to_revert);
                 //revert it
             uc_reg_write(uc, uc_reg_from_int(thing_to_fault), &value_to_revert); 
             break;
         case instruction_pointer_ft:
             //read it
             thing_to_fault=binary_file_details->my_pc_reg;
-            fprintf_output(current_run_state->file_fprintf, "Reverting instruction pointer: 0x%016llx\n", value_to_revert);
+            fprintf_output(current_run_state->file_fprintf, "Reverting instruction pointer: 0x%016lx\n", value_to_revert);
                 //revert it
             uc_reg_write(uc, thing_to_fault, &value_to_revert); 
             break;
@@ -144,7 +144,7 @@ void hook_lifespan_repeat_register(uc_engine *uc, uint64_t address, uint64_t siz
         // The repeated faults start AFTER the faulted address.
         return;
     }
-    fprintf_output(current_run_state->file_fprintf,"Lifespan register repeat countdown: %llu. (0x%" PRIx64 ")\n",this_fault->lifespan.count,address);
+    fprintf_output(current_run_state->file_fprintf,"Lifespan register repeat countdown: %lu. (0x%" PRIx64 ")\n",this_fault->lifespan.count,address);
     
     this_fault->lifespan.live_counter--; 
 

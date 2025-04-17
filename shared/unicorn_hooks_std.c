@@ -137,9 +137,10 @@ void hook_count_instructions(uc_engine *uc, uint64_t address, uint64_t size, voi
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
 
     #ifdef DEBUG
-        //printf_debug("hook_count_instructions. Address: %" PRIx64 ". Size: %li. Count: %li\n",address,size,current_run_state->instruction_count);
-        printf("%" PRId64 ".",current_run_state->instruction_count);
-    #endif
+    // printf_debug("hook_count_instructions. Address: %" PRIx64 ". Size: %lu.
+    // Count: %lu\n",address,size,current_run_state->instruction_count);
+    //  printf("%" PRId64 ".",current_run_state->instruction_count);
+#endif
     current_run_state->last_address=address;
 
     if (current_run_state->in_fault_range == 0)
@@ -170,7 +171,7 @@ void hook_code_skips(uc_engine *uc, uint64_t address, uint64_t size, void *user_
     }
     if (current_run_state->run_mode == eGOLDENRUN_FULL_rm || current_run_state->run_mode == eDEBUG_rm)
     {
-        fprintf(current_run_state->file_fprintf,"Skipping address: 0x%" PRIx64 ". Size: %llu\n",address,size);
+        fprintf(current_run_state->file_fprintf,"Skipping address: 0x%" PRIx64 ". Size: %lu\n",address,size);
     }
     uint64_t tmp_reg=address + size;
     if (binary_file_details->my_uc_mode == UC_MODE_THUMB)
@@ -269,7 +270,7 @@ void hook_code_print_instructions(uc_engine *uc, uint64_t address, uint64_t size
 
 
 
-        fprintf(current_run_state->file_fprintf, "0x%08llx ",address);
+        fprintf(current_run_state->file_fprintf, "0x%08lx ",address);
         for (int i=0;i<size;i++)
         {
             fprintf(current_run_state->file_fprintf,"%02x ", tmp[i]);
@@ -340,7 +341,7 @@ bool hook_mem_read_after(uc_engine *uc, uc_mem_type type, uint64_t address, uint
     #endif
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
 
-    fprintf(current_run_state->file_fprintf, "\t\t\t\t\t\t\t\t\t\t\t\t >> Hooks: Mem read.  Address: 0x%08" PRIx64 ". Size of read:  %llu Value: 0x%08" PRIx64 " \n",address, size, value);
+    fprintf(current_run_state->file_fprintf, "\t\t\t\t\t\t\t\t\t\t\t\t >> Hooks: Mem read.  Address: 0x%08" PRIx64 ". Size of read:  %lu Value: 0x%08" PRIx64 " \n",address, size, value);
     return true;
 }
 
@@ -351,7 +352,7 @@ bool hook_mem_write(uc_engine *uc, uc_mem_type type, uint64_t address, uint64_t 
     #endif
 
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
-    fprintf(current_run_state->file_fprintf, "\t\t\t\t\t\t\t\t\t\t\t\t >> Hooks: Mem write. Address: 0x%08" PRIx64 ". Size of write: %llu Value: 0x%08" PRIx64 " \n", address, size, value);
+    fprintf(current_run_state->file_fprintf, "\t\t\t\t\t\t\t\t\t\t\t\t >> Hooks: Mem write. Address: 0x%08" PRIx64 ". Size of write: %lu Value: 0x%08" PRIx64 " \n", address, size, value);
 
     return true;
 }

@@ -68,7 +68,7 @@ uint32_t super_fast_hash (const uint8_t * data, int len)
 void print_memory_and_stack (line_details_t* line_details_array, uint64_t num)
 {
     uint64_t i;
-    printf("\n~~~ Printing stack. Size: %llu ~~~\n",binary_file_details->stack.size);
+    printf("\n~~~ Printing stack. Size: %lu ~~~\n",binary_file_details->stack.size);
     for (i=0;i<binary_file_details->stack.size;i++)
     {
         printf("0x%08" PRIx64":",i);
@@ -76,7 +76,7 @@ void print_memory_and_stack (line_details_t* line_details_array, uint64_t num)
         printf("\n");
     }
 
-    printf("\n~~~ Printing memory main. Size: %llu ~~~\n",binary_file_details->memory_main.size);
+    printf("\n~~~ Printing memory main. Size: %lu ~~~\n",binary_file_details->memory_main.size);
     for (i=0;i<binary_file_details->memory_main.size;i++)
     {
         printf("%" PRIx8 " ",line_details_array[num].memory_main[i]);
@@ -85,7 +85,7 @@ void print_memory_and_stack (line_details_t* line_details_array, uint64_t num)
     printf("\n~~~ Printing memory other ~~~");
     for (int j=0;j<binary_file_details->memory_other_count;j++)
     {
-        printf("\n~~~ Printing memory other Number: %i. Size: %llu  ~~~\n",j,binary_file_details->memory_other[j].size);
+        printf("\n~~~ Printing memory other Number: %i. Size: %lu  ~~~\n",j,binary_file_details->memory_other[j].size);
 
         for (i=0;i<binary_file_details->memory_other[j].size;i++)
         {
@@ -168,23 +168,23 @@ void print_current_run_state(current_run_state_t* c)
     printf("Directory for output:        %s\n",c->directory);
     printf("Run mode:                    %s\n",run_mode_to_string(c->run_mode));
     printf("Run state:                   %s\n",run_state_to_string(c->run_state));
-    printf("Instruction count:           %llu\n",c->instruction_count);
-    printf("Total instruction count:     %llu\n",c->total_instruction_count);
-    printf("Number of checkpoints:       %llu\n",c->total_num_checkpoints);
+    printf("Instruction count:           %lu\n",c->instruction_count);
+    printf("Total instruction count:     %lu\n",c->total_instruction_count);
+    printf("Number of checkpoints:       %lu\n",c->total_num_checkpoints);
     printf("Last address:                0x%" PRIx64 "\n",c->last_address);
     printf("In fault range:              %s\n",c->in_fault_range == 1? "Yes": "No");
     printf("Fault rule - set             %s\n",c->fault_rule.set == 1? "Yes": "No");
     printf("Start from checkpoint:       %s\n",c->start_from_checkpoint == 1? "Yes": "No");
     printf("Stop on equivalence:         %s\n",c->stop_on_equivalence == 1? "Yes": "No");
-    printf("Time to run:                 %llu\n",c->time_to_run);
-    printf("Time to restore checkpoint:  %llu\n",c->time_to_restore_checkpoint);
-    printf("Equivalence count:           %llu\n",c->equivalence_count);
+    printf("Time to run:                 %lu\n",c->time_to_run);
+    printf("Time to restore checkpoint:  %lu\n",c->time_to_restore_checkpoint);
+    printf("Equivalence count:           %lu\n",c->equivalence_count);
     printf("Checkpoints: \n");
     for (uint64_t i=1 ; i<c->total_instruction_count+1;i++)
     {
         if (c->line_details_array[i].checkpoint == true)
         {
-            printf(" > Instruction: %08lli Address: 0x%" PRIx64 " Hitcount: %lli\n",
+            printf(" > Instruction: %08lli Address: 0x%" PRIx64 " Hitcount: %lx\n",
             i, c->line_details_array[i].address, c->line_details_array[i].hit_count);
         }
     }
@@ -212,7 +212,7 @@ void print_fault_rule_no_newline( FILE *fd,fault_rule_t *fault_rule)
     switch (fault_rule->target)
     {
         case reg_ft:
-            fprintf(fd,"Register%s. Reg#: %s. Mask: 0x%016llx. ",
+            fprintf(fd,"Register%s. Reg#: %s. Mask: 0x%016lx. ",
                 fault_rule->force == true?" [FORCE FAULT]":"", 
                 register_name_from_int(fault_rule->number),
                 fault_rule->mask);
@@ -221,7 +221,7 @@ void print_fault_rule_no_newline( FILE *fd,fault_rule_t *fault_rule)
             fprintf(fd,"InstructionPointer. \t\t");
             break;
         case instruction_ft:
-            fprintf(fd,"Instruction. Mask: 0x%016llx. ",fault_rule->mask);
+            fprintf(fd,"Instruction. Mask: 0x%016lx. ",fault_rule->mask);
             break;
         default:
             fprintf(stderr, "No valid target specified unable to print fault fule.\n");
@@ -239,7 +239,7 @@ void print_fault_rule( FILE *fd,fault_rule_t *fault_rule)
 
 void print_fault_rule_with_address( FILE *fd,fault_rule_t *fault_rule)
 {
-    fprintf(fd,"Address 0x%08llx. ", fault_rule->faulted_address);
+    fprintf(fd,"Address 0x%08lx. ", fault_rule->faulted_address);
     print_fault_rule_no_newline(fd,fault_rule);
 }
 
@@ -279,11 +279,11 @@ void print_memory(uc_engine* uc, FILE* fd)
 {
     uint8_t* all_memory=MY_STACK_ALLOC(sizeof(uint8_t)*binary_file_details->memory_main.size);
     uc_mem_read(uc,binary_file_details->memory_main.address,all_memory,binary_file_details->memory_main.size);
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Memory. Address start: 0x%08llx address size:0x%08llx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Memory. Address start: 0x%08lx address size:0x%08lx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
     binary_file_details->memory_main.address,binary_file_details->memory_main.size );
     for (uint64_t i=0;i<binary_file_details->memory_main.size; i+=8)
     {
-        printf ("0x%08llx\t",binary_file_details->memory_main.address+i);
+        printf ("0x%08lx\t",binary_file_details->memory_main.address+i);
         phex(fd,all_memory+i,8);
     }
 }
@@ -300,11 +300,11 @@ void print_stack(uc_engine* uc, FILE* fd)
 {
     uint8_t* all_stack=MY_STACK_ALLOC(sizeof(uint8_t)*binary_file_details->stack.size);
     uc_mem_read(uc,binary_file_details->stack.address,all_stack,binary_file_details->stack.size);
-    fprintf(fd,"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stack. Address start: 0x%08llx address size:0x%08llx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
+    fprintf(fd,"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stack. Address start: 0x%08lx address size:0x%08lx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
     binary_file_details->stack.address,binary_file_details->stack.size );
     for (uint64_t i=0;i<binary_file_details->stack.size; i+=8)
     {   
-        fprintf (fd,"0x%08llx\t",binary_file_details->stack.address+i);
+        fprintf (fd,"0x%08lx\t",binary_file_details->stack.address+i);
         phex(fd,all_stack+i,8);
     }
 }
@@ -330,7 +330,7 @@ void print_stack_from_sp(uc_engine* uc, FILE* fd, uint64_t stack_size_to_print)
             fprintf(fd, "Attempting to read outside of allocated stack address space: sp_address: 0x%" PRIx64 " and size: 0x%" PRIx64 "\n",sp_address,stack_size_to_print);
 
             stack_size_to_print=(binary_file_details->stack.address + binary_file_details->stack.size)-sp_address;
-            fprintf(fd, "Changing size to: 0x%llx\n", stack_size_to_print);
+            fprintf(fd, "Changing size to: 0x%lx\n", stack_size_to_print);
         }
 
      if (stack_size_to_print<=0)
@@ -341,17 +341,17 @@ void print_stack_from_sp(uc_engine* uc, FILE* fd, uint64_t stack_size_to_print)
     err=uc_mem_read(uc,sp_address,stack,stack_size_to_print);
     if (err) 
     {
-        fprintf(stderr, "Failed in print stack reading the data from the stack. Stack address: 0x%" PRIx64 ". Stack size to read: %llx. Error: %s\n", 
+        fprintf(stderr, "Failed in print stack reading the data from the stack. Stack address: 0x%" PRIx64 ". Stack size to read: %lx. Error: %s\n", 
             sp_address,
             stack_size_to_print,
             uc_strerror(err)); 
         my_exit(1);
     }
-    fprintf(fd,"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stack:  Address start: 0x%08llx address size:0x%08llx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n", sp_address,stack_size_to_print );
+    fprintf(fd,"\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Stack:  Address start: 0x%08lx address size:0x%08lx~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n", sp_address,stack_size_to_print );
 
     for (uint64_t i=0;i<stack_size_to_print; i+=steps)
     {   
-        fprintf (fd,"0x%08llx\t",sp_address+i);
+        fprintf (fd,"0x%08lx\t",sp_address+i);
         phex(fd,stack+i,steps);
         //phex_reverse(fd,stack+i,steps);
     }
@@ -772,7 +772,7 @@ void print_binary_file_details()
     printf("code_end_address:        0x%" PRIx64 "\n", binary_file_details->code_end_address);
     printf("fault_start_address:     0x%" PRIx64 "\n", binary_file_details->fault_start_address);
     printf("fault_end_address:       0x%" PRIx64 "\n", binary_file_details->fault_end_address);
-    printf("timeout:                 %llu\n",   binary_file_details->timeout);
+    printf("timeout:                 %lu\n",   binary_file_details->timeout);
     uint64_t i;
     for (i=0;i<binary_file_details->skips_count;i++)
     {
@@ -806,7 +806,7 @@ void print_binary_file_details()
     {
         printf("Set memory - Type:       %d\n",binary_file_details->set_memory[i].type);
         printf("Set memory - Format:     %d\n",binary_file_details->set_memory[i].format);
-        printf("Set memory - Length:     %llu\n",binary_file_details->set_memory[i].length);
+        printf("Set memory - Length:     %lu\n",binary_file_details->set_memory[i].length);
         printf("Set memory - Byte Array: 0x%hhn\n",binary_file_details->set_memory[i].byte_array);
         printf("Set memory - Address:    0x%" PRIx64 "\n",binary_file_details->set_memory[i].address);
         printf("Set memory - Sp Offset:  0x%" PRIx64 "\n",binary_file_details->set_memory[i].sp_offset);

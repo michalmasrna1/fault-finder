@@ -267,7 +267,7 @@ void get_memory_other_details(struct json_object* parsed_json)
         json_object_object_get_ex(next_memory_other,"address",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting address for %llu th memory other.\n",i);
+            fprintf(stderr,"Error getting address for %lu th memory other.\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.memory_other[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -276,7 +276,7 @@ void get_memory_other_details(struct json_object* parsed_json)
         json_object_object_get_ex(next_memory_other,"size",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting size  for %llu th memory other.\n",i);
+            fprintf(stderr,"Error getting size  for %lu th memory other.\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.memory_other[i].size=strtol(json_object_get_string(temp),NULL,0);
@@ -519,7 +519,7 @@ void get_patches(struct json_object* parsed_json)
             json_object_object_get_ex(next_patch,"address",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting address for %llu th patch.\n",i);
+                fprintf(stderr,"Error getting address for %lu th patch.\n",i);
                 my_exit(-1);  
             }
             internal_binary_file_details.patches[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -528,14 +528,14 @@ void get_patches(struct json_object* parsed_json)
             json_object_object_get_ex(next_patch,"byte array",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting byte_array for %lluth patch. Did you forget to include a 'byte array' tag?\n",i);
+                fprintf(stderr,"Error getting byte_array for %luth patch. Did you forget to include a 'byte array' tag?\n",i);
                 my_exit(-1);  
             }
 
             internal_binary_file_details.patches[i].length=json_object_get_string_len(temp);
             if (internal_binary_file_details.patches[i].length %2 != 0)
             {
-                fprintf(stderr,"Error getting byte_array for %lluth patch. byte_array is not an even number of hex digits.?\n",i);
+                fprintf(stderr,"Error getting byte_array for %luth patch. byte_array is not an even number of hex digits.?\n",i);
                 my_exit(-1);  
             }
 
@@ -572,7 +572,7 @@ void get_skips(struct json_object* parsed_json)
         json_object_object_get_ex(next_skip,"address",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting address for %llu th skips.\n",i);
+            fprintf(stderr,"Error getting address for %lu th skips.\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.skips[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -581,7 +581,7 @@ void get_skips(struct json_object* parsed_json)
         json_object_object_get_ex(next_skip,"bytes",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting bytes value for %lluth skip. Did you forget the 'bytes' tag?\n",i);
+            fprintf(stderr,"Error getting bytes value for %luth skip. Did you forget the 'bytes' tag?\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.skips[i].bytes=strtol(json_object_get_string(temp),NULL,0);
@@ -611,7 +611,7 @@ void get_hard_stops(struct json_object* parsed_json)
         json_object_object_get_ex(next_hard_stop,"location",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting location for %lluth hard_stop.\n",i);
+            fprintf(stderr,"Error getting location for %luth hard_stop.\n",i);
             my_exit(-1);  
         }
 	internal_binary_file_details.hard_stops[i].location=relative_address_loc;
@@ -624,7 +624,7 @@ void get_hard_stops(struct json_object* parsed_json)
         json_object_object_get_ex(next_hard_stop,"address",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting address for %llu th hard stop.\n",i);
+            fprintf(stderr,"Error getting address for %lu th hard stop.\n",i);
             my_exit(-1);
         }
         internal_binary_file_details.hard_stops[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -655,7 +655,7 @@ void get_set_memory(struct json_object* parsed_json)
         json_object_object_get_ex(next_memory_item,"format",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting format for %lluth set memory. Did you forget to include a 'format' tag?\n",i);
+            fprintf(stderr,"Error getting format for %luth set memory. Did you forget to include a 'format' tag?\n",i);
             my_exit(-1);  
         }
         if (strcmp(json_object_get_string(temp),"hex") == 0)
@@ -668,7 +668,7 @@ void get_set_memory(struct json_object* parsed_json)
         }
         else
         {
-            fprintf(stderr,"No valid format set for %lluth set memory. Options are 'hex' or 'ascii'\n",i);
+            fprintf(stderr,"No valid format set for %luth set memory. Options are 'hex' or 'ascii'\n",i);
             my_exit(-1);
         }
 
@@ -676,7 +676,7 @@ void get_set_memory(struct json_object* parsed_json)
         json_object_object_get_ex(next_memory_item,"byte array",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting byte_array for %lluth set memory. Did you forget to include a 'byte array' tag?\n",i);
+            fprintf(stderr,"Error getting byte_array for %luth set memory. Did you forget to include a 'byte array' tag?\n",i);
             my_exit(-1);  
         }
 
@@ -699,7 +699,7 @@ void get_set_memory(struct json_object* parsed_json)
         json_object_object_get_ex(next_memory_item,"type",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting json tag 'type' for %llu th new input (Should be 'address' or 'sp offset').\n",i);
+            fprintf(stderr,"Error getting json tag 'type' for %lu th new input (Should be 'address' or 'sp offset').\n",i);
             my_exit(-1);  
         }
 
@@ -711,7 +711,7 @@ void get_set_memory(struct json_object* parsed_json)
             json_object_object_get_ex(next_memory_item,"address",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting address for %llu th new input. Did you include an 'address' tag?\n",i);
+                fprintf(stderr,"Error getting address for %lu th new input. Did you include an 'address' tag?\n",i);
                 my_exit(-1);  
             }
             internal_binary_file_details.set_memory[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -724,14 +724,14 @@ void get_set_memory(struct json_object* parsed_json)
             json_object_object_get_ex(next_memory_item,"sp_offset",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting sp_offset for %llu th new input. Did you include an 'sp_offset' tag?",i);
+                fprintf(stderr,"Error getting sp_offset for %lu th new input. Did you include an 'sp_offset' tag?",i);
                 my_exit(-1);  
             }
             internal_binary_file_details.set_memory[i].sp_offset=strtol(json_object_get_string(temp),NULL,0);
         }
         else
         {
-            fprintf(stderr,"Error -  type for %llu th new input (should be 'address' or 'sp_offset').\n",i);
+            fprintf(stderr,"Error -  type for %lu th new input (should be 'address' or 'sp_offset').\n",i);
             my_exit(-1);  
         }
         
@@ -764,7 +764,7 @@ void get_set_registers(struct json_object* parsed_json)
         json_object_object_get_ex(next_register,"reg",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting reg for %llu th set registers. Use 'reg'.\n",i);
+            fprintf(stderr,"Error getting reg for %lu th set registers. Use 'reg'.\n",i);
             my_exit(-1);  
         }
         const char* reg_name_temp=json_object_get_string(temp);
@@ -774,7 +774,7 @@ void get_set_registers(struct json_object* parsed_json)
         json_object_object_get_ex(next_register,"reg value",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting reg value for %llu th new register. Use 'reg value'\n",i);
+            fprintf(stderr,"Error getting reg value for %lu th new register. Use 'reg value'\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.set_registers[i].reg_value=strtol(json_object_get_string(temp),NULL,0);
@@ -805,7 +805,7 @@ void get_outputs(struct json_object* parsed_json)
         json_object_object_get_ex(next_output,"location",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting location for %lluth output.\n",i);
+            fprintf(stderr,"Error getting location for %luth output.\n",i);
             my_exit(-1);  
         }
         if (strcmp(json_object_get_string(temp),"register") == 0)
@@ -826,7 +826,7 @@ void get_outputs(struct json_object* parsed_json)
         }
         else
         {
-            fprintf(stderr,"No valid format set for %lluth output. Received: %s\n",i,json_object_get_string(temp));
+            fprintf(stderr,"No valid format set for %luth output. Received: %s\n",i,json_object_get_string(temp));
             fprintf(stderr,"Valid outputs are: register, relative address, fixed address, address in register.\n");
             my_exit(-1);
         }
@@ -837,7 +837,7 @@ void get_outputs(struct json_object* parsed_json)
             json_object_object_get_ex(next_output,"register",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting register for %lluth output.\n",i);
+                fprintf(stderr,"Error getting register for %luth output.\n",i);
                 my_exit(-1);  
             }
             const char* reg_name=json_object_get_string(temp);
@@ -849,7 +849,7 @@ void get_outputs(struct json_object* parsed_json)
             json_object_object_get_ex(next_output,"address",&temp);
             if (temp == NULL)    
             {
-                fprintf(stderr,"Error getting address for %lluth output.\n",i);
+                fprintf(stderr,"Error getting address for %luth output.\n",i);
                 my_exit(-1);  
             }
             internal_binary_file_details.outputs[i].address=strtol(json_object_get_string(temp),NULL,0);
@@ -858,7 +858,7 @@ void get_outputs(struct json_object* parsed_json)
         json_object_object_get_ex(next_output,"length",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting length for %lluth output.\n",i);
+            fprintf(stderr,"Error getting length for %luth output.\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.outputs[i].length=strtol(json_object_get_string(temp),NULL,0);
@@ -867,7 +867,7 @@ void get_outputs(struct json_object* parsed_json)
         json_object_object_get_ex(next_output,"offset",&temp);
         if (temp == NULL)    
         {
-            fprintf(stderr,"Error getting offest for %lluth output.\n",i);
+            fprintf(stderr,"Error getting offest for %luth output.\n",i);
             my_exit(-1);  
         }
         internal_binary_file_details.outputs[i].offset=strtol(json_object_get_string(temp),NULL,0);

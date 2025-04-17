@@ -83,7 +83,7 @@ void uc_restore_from_checkpoint(uc_engine *uc, current_run_state_t *current_run_
     uint64_t address=current_run_state->line_details_array[instr].address;
     
     fprintf_output( current_run_state->file_fprintf,
-                    "Restoring check point. Starting from: %llu Address: 0x%" PRIx64 " . (Checkpoint: %llu Address: 0x%" PRIx64 ") \n", 
+                    "Restoring check point. Starting from: %lu Address: 0x%" PRIx64 " . (Checkpoint: %lu Address: 0x%" PRIx64 ") \n", 
                     instr, 
                     address,
                     checkpoint_instr,
@@ -91,13 +91,13 @@ void uc_restore_from_checkpoint(uc_engine *uc, current_run_state_t *current_run_
 
     if (current_run_state->line_details_array[checkpoint_instr].the_context == NULL)
     {
-        fprintf(stderr, "Unable to restore from checkpoint instruction %llu. No checkpoint stored. (Actual instruction: %llu)\n", checkpoint_instr,instr);
+        fprintf(stderr, "Unable to restore from checkpoint instruction %lu. No checkpoint stored. (Actual instruction: %lu)\n", checkpoint_instr,instr);
         my_exit(-1);
     }
 
     if (current_run_state->line_details_array[checkpoint_instr].checkpoint == false)
     {
-        fprintf(stderr, "Checkpoint instruction %llu is reporting itself NOT to be a checkpoint! (Actual instruction: %llu)\n", checkpoint_instr,instr);
+        fprintf(stderr, "Checkpoint instruction %lu is reporting itself NOT to be a checkpoint! (Actual instruction: %lu)\n", checkpoint_instr,instr);
         my_exit(-1);
     }
 
@@ -150,7 +150,7 @@ void uc_restore_from_checkpoint(uc_engine *uc, current_run_state_t *current_run_
     // if ((binary_file_details->my_uc_arch == UC_ARCH_ARM || binary_file_details->my_uc_arch == UC_ARCH_ARM64))
     // {
     //     #ifdef DEBUG
-    //         printf_debug("uc_restore_from_checkpoint. Adding one to program counter. 0x%llu\n",tmp_reg);
+    //         printf_debug("uc_restore_from_checkpoint. Adding one to program counter. 0x%lu\n",tmp_reg);
     //     #endif
     //     tmp_reg++;  // IF THUMB
     // }
@@ -165,7 +165,7 @@ void uc_restore_from_checkpoint(uc_engine *uc, current_run_state_t *current_run_
 
     // stop emulation
     #ifdef DEBUG
-            printf_debug("uc_restore_from_checkpoint. Adding one to program counter. 0x%llu\n",current_run_state->line_details_array[checkpoint_instr].address);
+            printf_debug("uc_restore_from_checkpoint. Adding one to program counter. 0x%lu\n",current_run_state->line_details_array[checkpoint_instr].address);
         #endif
     current_run_state->restart=true;
     current_run_state->restart_address=current_run_state->line_details_array[checkpoint_instr].address;
@@ -213,7 +213,7 @@ void print_outputs(uc_engine *uc, current_run_state_t *current_run_state)
             err=uc_reg_read(uc, uc_reg_from_int(tmp_reg), &tmp_address);
             if (err == UC_ERR_OK)
             {
-                fprintf(f, " >>> Output from address (0x%08llx) in register (%s) : ", tmp_address, register_name_from_int(tmp_reg));
+                fprintf(f, " >>> Output from address (0x%08lx) in register (%s) : ", tmp_address, register_name_from_int(tmp_reg));
                 len =binary_file_details->outputs[i].length;
                 uint8_t* tmp_output=MY_STACK_ALLOC(len +1);
                 err=uc_mem_read(uc, tmp_address, tmp_output, binary_file_details->outputs[i].length);
@@ -244,7 +244,7 @@ void print_outputs(uc_engine *uc, current_run_state_t *current_run_state)
             err=uc_mem_read(uc, tmp_address, (void*)tmp_output, len);
             if (err == UC_ERR_OK)
             {
-                fprintf(f," >>> Output from address (0x%08llx): ", tmp_address);
+                fprintf(f," >>> Output from address (0x%08lx): ", tmp_address);
                 phex(f, tmp_output,len);
             }
             else
@@ -290,7 +290,7 @@ void uc_engine_set_memory_inputs(uc_engine *uc, current_run_state_t *current_run
         if (binary_file_details->set_memory[i].type == address_memory)
         {
             new_address=binary_file_details->set_memory[i].address;
-            fprintf_output(fd, "Writing memory input #%llu directly to address: 0x%016llx: ", i,new_address);
+            fprintf_output(fd, "Writing memory input #%lu directly to address: 0x%016lx: ", i,new_address);
             phex(fd,binary_file_details->set_memory[i].byte_array, binary_file_details->set_memory[i].length);
 
         }
@@ -305,7 +305,7 @@ void uc_engine_set_memory_inputs(uc_engine *uc, current_run_state_t *current_run
             }
             new_address=new_address+binary_file_details->set_memory[i].sp_offset;
             #ifdef DEBUG
-                fprintf(fd, " >> Writing memory input  #%llu : Sp offset: %llu (decimal) - address: 0x%016li: ", i,
+                fprintf(fd, " >> Writing memory input  #%lu : Sp offset: %lu (decimal) - address: 0x%016li: ", i,
                         (int64_t)binary_file_details->set_memory[i].sp_offset, new_address);
             #endif
         }
@@ -316,7 +316,7 @@ void uc_engine_set_memory_inputs(uc_engine *uc, current_run_state_t *current_run
                         binary_file_details->set_memory[i].length);
         if (err != UC_ERR_OK)
         {
-            fprintf(stderr, "Failed to write input %llu to address: 0x%" PRIx64 ". Error: %s\n", i, binary_file_details->set_memory[i].address, uc_strerror(err));
+            fprintf(stderr, "Failed to write input %lu to address: 0x%" PRIx64 ". Error: %s\n", i, binary_file_details->set_memory[i].address, uc_strerror(err));
             fprintf(stderr, "Check you are using 0x to represent a hex address?");
             my_exit(-1);
         }
@@ -332,12 +332,12 @@ void uc_engine_set_new_register_inputs(uc_engine *uc, current_run_state_t *curre
     {
         reg_tmp=binary_file_details->set_registers[i].reg;
         value=binary_file_details->set_registers[i].reg_value;
-        fprintf(fd, " >> Writing register input #%llu directly to register: %s. Value: 0x%016llx\n", i, register_name_from_int(reg_tmp),value);
+        fprintf(fd, " >> Writing register input #%lu directly to register: %s. Value: 0x%016lx\n", i, register_name_from_int(reg_tmp),value);
 
         err=uc_reg_write(uc,uc_reg_from_int(reg_tmp), &value);
         if (err != UC_ERR_OK)
         {
-            fprintf(stderr, "Failed to write register input %llu to register:%llu. Error: %s\n", i, reg_tmp, uc_strerror(err));
+            fprintf(stderr, "Failed to write register input %lu to register:%lu. Error: %s\n", i, reg_tmp, uc_strerror(err));
             my_exit(-1);
         }
     }
@@ -350,7 +350,7 @@ void uc_engine_load_code_into_memory(uc_engine *uc, const char *code_buffer, siz
         printf_debug("memory_main.address: 0x%" PRIx64 "\n",binary_file_details->memory_main.address);
         printf_debug("code_buffer: %s \n",code_buffer);
         printf_debug("code_offset: 0x%" PRIx64 "\n",binary_file_details->code_offset);
-        printf_debug("filesize: 0x%" PRIx64 ", (%llu) bytes\n",filesize,filesize);
+        printf_debug("filesize: 0x%" PRIx64 ", (%lu) bytes\n",filesize,filesize);
     #endif
     uc_err err=uc_mem_write(uc, binary_file_details->memory_main.address,
                                 code_buffer + binary_file_details->code_offset,
@@ -442,7 +442,7 @@ void uc_engine_set_memory_to_zeros(uc_engine* uc)
     char *tmp_mem=MY_STACK_ALLOC(binary_file_details->stack.size);
     if (tmp_mem == NULL)
     {
-        fprintf(stderr, "Unable to allocate memory on the stack of size: %llu for temporary stack memory\n",binary_file_details->stack.size);
+        fprintf(stderr, "Unable to allocate memory on the stack of size: %lu for temporary stack memory\n",binary_file_details->stack.size);
     }
     memset(tmp_mem, 0, binary_file_details->stack.size);
     if (uc_mem_write(uc, binary_file_details->stack.address, tmp_mem, binary_file_details->stack.size))
@@ -455,7 +455,7 @@ void uc_engine_set_memory_to_zeros(uc_engine* uc)
     tmp_mem=MY_STACK_ALLOC(binary_file_details->memory_main.size);
     if (tmp_mem == NULL)
     {
-        fprintf(stderr, "Unable to allocate memory on the stack of size: %llu for temporary main memory\n",binary_file_details->memory_main.size);
+        fprintf(stderr, "Unable to allocate memory on the stack of size: %lu for temporary main memory\n",binary_file_details->memory_main.size);
     }
     memset(tmp_mem, 0, binary_file_details->memory_main.size);
     if (uc_mem_write(uc, binary_file_details->memory_main.address, tmp_mem, binary_file_details->memory_main.size))
@@ -469,7 +469,7 @@ void uc_engine_set_memory_to_zeros(uc_engine* uc)
         tmp_mem=MY_STACK_ALLOC(binary_file_details->memory_other[i].size);
         if (tmp_mem == NULL)
         {
-            fprintf(stderr, "Unable to allocate memory on the stack of size: %llu for temporary other memory\n",binary_file_details->memory_other[i].size);
+            fprintf(stderr, "Unable to allocate memory on the stack of size: %lu for temporary other memory\n",binary_file_details->memory_other[i].size);
         }
         memset(tmp_mem, 0, binary_file_details->memory_other[i].size);
         if (uc_mem_write(uc, binary_file_details->memory_other[i].address, tmp_mem, binary_file_details->memory_other[i].size))

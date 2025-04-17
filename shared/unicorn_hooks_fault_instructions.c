@@ -148,7 +148,7 @@ void hook_lifespan_repeat_instruction(uc_engine *uc, uint64_t address, uint64_t 
         return;
     }
     // we're repeating the fault 
-    fprintf_output(current_run_state->file_fprintf,"Lifespan repeat (instruction): %llu. (0x%" PRIx64 ") \n",this_fault->lifespan.live_counter,address);
+    fprintf_output(current_run_state->file_fprintf,"Lifespan repeat (instruction): %lu. (0x%" PRIx64 ") \n",this_fault->lifespan.live_counter,address);
 
     // FAULT IT AGAIN HERE---------------------------------
     do_the_instruction_fault(uc, current_run_state,address,size);
@@ -192,7 +192,7 @@ void hook_lifespan_revert_instruction(uc_engine *uc, uint64_t address, uint64_t 
         // The lifespan starts AFTER the faulted address.
         return;
     }
-    fprintf_output(current_run_state->file_fprintf,"Lifespan revert countdown (instruction): %llu. (0x%" PRIx64 ") \n",this_fault->lifespan.live_counter,address);
+    fprintf_output(current_run_state->file_fprintf,"Lifespan revert countdown (instruction): %lu. (0x%" PRIx64 ") \n",this_fault->lifespan.live_counter,address);
     this_fault->lifespan.live_counter--; 
     if (this_fault->lifespan.live_counter != 0)
         return;

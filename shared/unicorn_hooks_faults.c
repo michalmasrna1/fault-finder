@@ -146,7 +146,7 @@ void hook_code_stop_faults(uc_engine *uc, uint64_t address, uint64_t size, void 
     if (current_run_state->run_mode == eGOLDEN_rm)
     {
         // Only show the IN/OUT fault range if we're running the program to see all the instructions
-        fprintf(current_run_state->file_fprintf,"  <~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> OUT fault range!!! 0x%" PRIx64 ". Count: %llu\n",address,current_run_state->instruction_count); 
+        fprintf(current_run_state->file_fprintf,"  <~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~> OUT fault range!!! 0x%" PRIx64 ". Count: %lu\n",address,current_run_state->instruction_count); 
     }
     current_run_state->in_fault_range=0;
 }
@@ -172,7 +172,7 @@ void hook_intr(uc_engine *uc, uint64_t int_no, void *user_data)
     printf_debug("hook_intr\n");
 #endif
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
-    fprintf(current_run_state->file_fprintf, "Hook intr. Interrupt number: %lli \n", int_no);
+    fprintf(current_run_state->file_fprintf, "Hook intr. Interrupt number: %lx \n", int_no);
     current_run_state->run_state=INTERRUPT_rs;
     my_uc_emu_stop(uc);
 }
@@ -185,11 +185,11 @@ void hook_memory_invalid(uc_engine *uc, uc_mem_type type, uint64_t address, uint
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
     if (type == UC_MEM_READ_UNMAPPED)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: ʕ•ᴥ•ʔ  Oopsie    - reading from unmapped memory, address: 0x%016llx, value: 0x%" PRIx64 "!!\n", address, value);
+        fprintf(current_run_state->file_fprintf, " >! Errored: ʕ•ᴥ•ʔ  Oopsie    - reading from unmapped memory, address: 0x%016lx, value: 0x%" PRIx64 "!!\n", address, value);
     }
     else if (type == UC_MEM_WRITE_UNMAPPED)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: /ᐠ.ꞈ.ᐟ\\  Hmm - writing to unmapped memory, address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!! Count %lli Skipping to end.\n", address, value,current_run_state->instruction_count);
+        fprintf(current_run_state->file_fprintf, " >! Errored: /ᐠ.ꞈ.ᐟ\\  Hmm - writing to unmapped memory, address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!! Count %lu Skipping to end.\n", address, value,current_run_state->instruction_count);
     }
     else if (type == UC_MEM_FETCH_PROT)
     {

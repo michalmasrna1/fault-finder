@@ -27,25 +27,25 @@ void print_run_info(current_run_state_t * current_run_state)
 {
     FILE* f=current_run_state->file_fprintf;
     fprintf_output(f,"Filename              : %s\n",binary_file_details->binary_filename);
-    fprintf_output(f,"Stack Start Address   : 0x%016llx\n",binary_file_details->stack_start_address);
-    fprintf_output(f,"Stack Address         : 0x%016llx\n",binary_file_details->stack.address);
-    fprintf_output(f,"Stack Size            : 0x%016llx\n",binary_file_details->stack.size);
-    fprintf_output(f,"Code Start Address    : 0x%016llx\n",binary_file_details->code_start_address);
-    fprintf_output(f,"Code End Address      : 0x%016llx\n",binary_file_details->code_end_address);
-    fprintf_output(f,"Code Offset           : 0x%016llx\n",binary_file_details->code_offset);
-    fprintf_output(f,"Fault Start Address   : 0x%016llx\n",binary_file_details->fault_start_address);
-    fprintf_output(f,"Fault End Address     : 0x%016llx\n",binary_file_details->fault_end_address);
-    fprintf_output(f,"Memory Address        : 0x%016llx\n",binary_file_details->memory_main.address);
-    fprintf_output(f,"Memory Size           : 0x%016llx\n",binary_file_details->memory_main.size);
+    fprintf_output(f,"Stack Start Address   : 0x%016lx\n",binary_file_details->stack_start_address);
+    fprintf_output(f,"Stack Address         : 0x%016lx\n",binary_file_details->stack.address);
+    fprintf_output(f,"Stack Size            : 0x%016lx\n",binary_file_details->stack.size);
+    fprintf_output(f,"Code Start Address    : 0x%016lx\n",binary_file_details->code_start_address);
+    fprintf_output(f,"Code End Address      : 0x%016lx\n",binary_file_details->code_end_address);
+    fprintf_output(f,"Code Offset           : 0x%016lx\n",binary_file_details->code_offset);
+    fprintf_output(f,"Fault Start Address   : 0x%016lx\n",binary_file_details->fault_start_address);
+    fprintf_output(f,"Fault End Address     : 0x%016lx\n",binary_file_details->fault_end_address);
+    fprintf_output(f,"Memory Address        : 0x%016lx\n",binary_file_details->memory_main.address);
+    fprintf_output(f,"Memory Size           : 0x%016lx\n",binary_file_details->memory_main.size);
 
     for (uint64_t i=0;i<binary_file_details->memory_other_count;i++)
     {
-        fprintf_output(f,"Other Memory Address  : 0x%016llx\n",binary_file_details->memory_other[i].address);
-        fprintf_output(f,"Other Memory Size     : 0x%016llx\n",binary_file_details->memory_other[i].size);
+        fprintf_output(f,"Other Memory Address  : 0x%016lx\n",binary_file_details->memory_other[i].address);
+        fprintf_output(f,"Other Memory Size     : 0x%016lx\n",binary_file_details->memory_other[i].size);
     }
     for (uint64_t i=0;i<binary_file_details->hard_stops_count;i++)
     {
-        fprintf_output(f,"Hard stop             : 0x%016llx\n",binary_file_details->hard_stops[i].address);
+        fprintf_output(f,"Hard stop             : 0x%016lx\n",binary_file_details->hard_stops[i].address);
     }
 }
 // Function to count the number of lines in the file
@@ -102,7 +102,7 @@ void print_stats(current_run_state_t *current_run_state)
         {
             if (binary_file_details->set_memory[i].format == hex_format)
             {
-                printf_output("Input %llu at address: 0x%" PRIx64 " provided:  ",i,binary_file_details->set_memory[i].address);
+                printf_output("Input %lu at address: 0x%" PRIx64 " provided:  ",i,binary_file_details->set_memory[i].address);
                 phex(stdout,binary_file_details->set_memory[i].byte_array, binary_file_details->set_memory[i].length);
             }
         }
@@ -114,8 +114,8 @@ void print_stats(current_run_state_t *current_run_state)
         printf_output("Register: %s. Register Value: 0x%" PRIx64 ".\n",register_name_from_int(binary_file_details->set_registers[i].reg), binary_file_details->set_registers[i].reg_value);
     }
     printf("\n");
-    printf_output("Start faults at address:     0x%08llx\n", binary_file_details->fault_start_address);
-    printf_output("End faults at address:       0x%08llx\n\n", binary_file_details->fault_end_address);
+    printf_output("Start faults at address:     0x%08lx\n", binary_file_details->fault_start_address);
+    printf_output("End faults at address:       0x%08lx\n\n", binary_file_details->fault_end_address);
     printf_output("Printing usage of registers: \n");
 
     //print the register info
@@ -123,7 +123,7 @@ void print_stats(current_run_state_t *current_run_state)
     {
         if (register_count[r]>0)
         {
-            printf("\t(%s):\t%8lli   \t\t \n",register_name_from_int(r),register_count[r]);
+            printf("\t(%s):\t%8lu   \t\t \n",register_name_from_int(r),register_count[r]);
         }
     }
 }
@@ -202,9 +202,9 @@ void run_to_count_total_instructions(current_run_state_t* current_run_state)
         tpi=current_run_state->time_to_run/num_instr;
     }
         
-    printf_output("Total instructions run:   %llu\n",num_instr);    
-    printf_output("Time to run:              %llu ns \n", current_run_state->time_to_run);
-    printf_output("Time per instruction:     %llu ns \n", tpi);
+    printf_output("Total instructions run:   %lu\n",num_instr);    
+    printf_output("Time to run:              %lu ns \n", current_run_state->time_to_run);
+    printf_output("Time per instruction:     %lu ns \n", tpi);
     my_uc_close(uc_count,current_run_state,"uc_count");
 
 }
@@ -216,7 +216,7 @@ void print_checkpoints(current_run_state_t *current_run_state)
     {
         if (current_run_state->line_details_array[i].checkpoint == true)
         {
-            printf ("Checkpoint %llu address: 0x%llx\n", i, current_run_state->line_details_array[i].address);
+            printf ("Checkpoint %lu address: 0x%lx\n", i, current_run_state->line_details_array[i].address);
         }
     }
 }
@@ -287,7 +287,7 @@ void run_to_write_stats(current_run_state_t *current_run_state)
 
         // Let the user know how much space they're about to use up if they're using checkpoints 
         fprintf(fd, " >> Total memory needed: %s.\n", human_size(big_number));
-        fprintf(fd, " >> If this fails - consider setting 'number of checkpoints' to a lower number than: %llu.\n",current_run_state->total_num_checkpoints); 
+        fprintf(fd, " >> If this fails - consider setting 'number of checkpoints' to a lower number than: %lu.\n",current_run_state->total_num_checkpoints); 
     
         first_checkpoint_instruction=get_next_checkpoint_number(1,current_run_state->total_num_checkpoints,total_faultrange_instrs,current_run_state->fault_instruction_min);
         next_checkpoint_instruction=first_checkpoint_instruction;
@@ -343,7 +343,7 @@ void run_to_write_stats(current_run_state_t *current_run_state)
             }
         }
     }
-    printf_output("Total number of checkpoints created: %llu (requested: %llu). \n",valid_checkpoint_count,current_run_state->total_num_checkpoints); 
+    printf_output("Total number of checkpoints created: %lu (requested: %lu). \n",valid_checkpoint_count,current_run_state->total_num_checkpoints); 
     current_run_state->total_num_checkpoints=valid_checkpoint_count;
 
     uc_engine *uc_stats;
@@ -408,7 +408,7 @@ void goldenrun_full_it (current_run_state_t* current_run_state)
     my_uc_hook_del("hk_code_print_instructions",uc_golden_full, hk_code_print_instructions,current_run_state);
 
 
-    printf_output("Total instructions in faulting range:   %llu\n",current_run_state->instruction_count);    
+    printf_output("Total instructions in faulting range:   %lu\n",current_run_state->instruction_count);    
     print_outputs(uc_golden_full, current_run_state);
     my_uc_close(uc_golden_full,current_run_state,"uc_golden_full");
 }
@@ -434,7 +434,7 @@ void goldenrun_it(current_run_state_t* current_run_state)
 
     /** For printing each line in the faulting range - DELETE the hook */
     my_uc_hook_del("hk_code_print_fault_instructions",uc_golden, hk_code_print_fault_instructions,current_run_state);
-    printf_output("Total instructions in faulting range:   %llu\n",current_run_state->instruction_count);    
+    printf_output("Total instructions in faulting range:   %lu\n",current_run_state->instruction_count);    
 
     print_outputs(uc_golden, current_run_state);
     my_uc_close(uc_golden, current_run_state, "uc_golden");
@@ -514,7 +514,7 @@ void *fault_it_thread(void *user_data)
         // UNLOCK
         if (workload.instruction > context->total_instrs )
         {
-                fprintf(stderr, "Instruction to fault: %llu is larger than the total number of instructions: %llu !\n",
+                fprintf(stderr, "Instruction to fault: %lu is larger than the total number of instructions: %lu !\n",
                     workload.instruction,
                     context->total_instrs );
                 my_exit(-1);
@@ -566,10 +566,10 @@ void stats_it(current_run_state_t* current_run_state)
     uint64_t time_checkpoint=current_run_state->time_to_restore_checkpoint;
     uint64_t num_instr=current_run_state->total_instruction_count;
 
-    printf_output("Time of first run:                             %llu ns \n", time_run);
-    printf_output("Time to restore checkpoint:                    %llu ns \n", time_checkpoint);
-    printf_output("Time per instruction (approx):                 %llu ns \n", time_run/num_instr);
-    printf_output("Equivalent instructions to restore checkpoint: %llu\n", time_checkpoint/(time_run/num_instr));
+    printf_output("Time of first run:                             %lu ns \n", time_run);
+    printf_output("Time to restore checkpoint:                    %lu ns \n", time_checkpoint);
+    printf_output("Time per instruction (approx):                 %lu ns \n", time_run/num_instr);
+    printf_output("Equivalent instructions to restore checkpoint: %lu\n", time_checkpoint/(time_run/num_instr));
     free_checkpoint_details(current_run_state);
 }
 
@@ -593,7 +593,7 @@ void debug_it(current_run_state_t* current_run_state)
     my_uc_hook_del("hk_code_print_debug",uc_debug, hk_code_print_debug,current_run_state);
 
 
-    printf_output("Total instructions in faulting range:   %llu\n",current_run_state->instruction_count);    
+    printf_output("Total instructions in faulting range:   %lu\n",current_run_state->instruction_count);    
     print_outputs(uc_debug, current_run_state);
     my_uc_close(uc_debug,current_run_state,"uc_debug");
 }
@@ -717,7 +717,7 @@ uint64_t count_faults_for_instruction_range(instruction_range_fault_t *current_i
         }
         else 
         {
-            fprintf(stderr,"No valid target found for fault at line: %llu.\n",current_instruction_range_fault->instruction_start);
+            fprintf(stderr,"No valid target found for fault at line: %lu.\n",current_instruction_range_fault->instruction_start);
             my_exit(-1);
         }
 
@@ -761,7 +761,7 @@ void get_on_with_it(const char *code_buffer, const size_t code_buffer_size, curr
     fault_address=thumb_check_address(fault_address);
     // DO NOT TOUCH THIS FORMAT!! It is used by ff-builddatabase.py to put the data into the database
     fprintf(f, "\n\n\n\n##### Starting new run. ");
-    fprintf(f, "Address: 0x%" PRIx64 ". Hit: %llu. Lifespan: %llu. ",fault_address,hit_count,current_run_state->fault_rule.lifespan.count);
+    fprintf(f, "Address: 0x%" PRIx64 ". Hit: %lu. Lifespan: %lu. ",fault_address,hit_count,current_run_state->fault_rule.lifespan.count);
     print_fault_rule_no_newline(f,&current_run_state->fault_rule);
     fprintf(f, " ###\n");
 
@@ -794,7 +794,7 @@ void get_on_with_it(const char *code_buffer, const size_t code_buffer_size, curr
             print_outputs(uc, current_run_state);
             break;
         case ERRORED_rs:
-            fprintf_output(f,"Run result: fault errored program - last instruction %llu.\n", current_run_state->instruction_count);
+            fprintf_output(f,"Run result: fault errored program - last instruction %lu.\n", current_run_state->instruction_count);
             print_outputs(uc, current_run_state);
             break;
         case TIMED_OUT_rs:
@@ -823,12 +823,12 @@ void get_on_with_it(const char *code_buffer, const size_t code_buffer_size, curr
     }
     if (current_run_state->time_to_run != 0)
     {
-        fprintf_output(f,"Instruction: %llu. Checkpoint %llu Time to run: %llu ns\n ", 
+        fprintf_output(f,"Instruction: %lu. Checkpoint %lu Time to run: %lu ns\n ", 
             current_run_state->fault_rule.instruction,
             current_run_state->line_details_array[current_run_state->fault_rule.instruction].nearest_checkpoint, 
             current_run_state->time_to_run);
 
-        fprintf(f, "%llu,%llu,%llu,%s,PLOTTINGLINE (for python graphs).\n ", 
+        fprintf(f, "%lu,%lu,%lu,%s,PLOTTINGLINE (for python graphs).\n ", 
             current_run_state->fault_rule.instruction,
             current_run_state->line_details_array[current_run_state->fault_rule.instruction].nearest_checkpoint, 
             current_run_state->time_to_run,
@@ -848,7 +848,7 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
     {
         if ((workload.instruction % DISPLAY_EVERY) == 0)
         {
-            fprintf(stdout,".%llu.",workload.instruction);
+            fprintf(stdout,".%lu.",workload.instruction);
             fflush(stdout);
         }
         current_run_state->fault_rule.set=true;
@@ -990,7 +990,7 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
             }
             }
             #ifdef DEBUGs
-                printf_debug("Getting next fault instructions: %llu\n",i);
+                printf_debug("Getting next fault instructions: %lu\n",i);
             #endif
             current_fault=current_fault->next;
         }
@@ -1002,7 +1002,7 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
         for (int64_t i=current_run_state->equivalence_count-1; i>=0; i--)
         {
             #ifdef DEBUGs
-                printf_debug("Freeing equivalence lists: %llu\n",i);
+                printf_debug("Freeing equivalence lists: %lu\n",i);
             #endif
             // Free the hashes 
             my_free(current_run_state->equivalences[i].faults,"equivalences faults");

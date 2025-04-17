@@ -67,7 +67,7 @@ void hook_lifespan_repeat_IP(uc_engine *uc, uint64_t address, uint64_t size, voi
     {
         return;         // The repeated faults start AFTER the faulted address.
     }
-    fprintf_output(current_run_state->file_fprintf,"Lifespan skip repeat countdown: %llu. (0x%" PRIx64 ") %" PRId64 "\n",this_fault->lifespan.count,address,current_run_state->instruction_count);
+    fprintf_output(current_run_state->file_fprintf,"Lifespan skip repeat countdown: %lu. (0x%" PRIx64 ") %" PRId64 "\n",this_fault->lifespan.count,address,current_run_state->instruction_count);
     
     this_fault->lifespan.live_counter--; 
 
@@ -121,7 +121,7 @@ void hook_code_fault_it_IP(uc_engine *uc, uint64_t address, uint64_t size, void 
         }
         if (this_fault->lifespan.mode == eREPEAT_lsm)
         {
-            fprintf_output(current_run_state->file_fprintf, "Note: repeating this fault %llu times.\n",this_fault->lifespan.count);
+            fprintf_output(current_run_state->file_fprintf, "Note: repeating this fault %lu times.\n",this_fault->lifespan.count);
             my_uc_hook_add("hk_fault_lifespan(IP)", uc, &current_run_state->hk_fault_lifespan, UC_HOOK_CODE, hook_lifespan_repeat_IP, current_run_state, address, address);
         }
     }

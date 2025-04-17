@@ -52,7 +52,7 @@ const char* register_name_from_int(uint64_t index)
         case UC_ARCH_ARM64:
             return register_name_from_int_arm64(index);
         default:
-            fprintf(stderr, "Error. Cannot find register for architecture: %llu.\n",index);
+            fprintf(stderr, "Error. Cannot find register for architecture: %lu.\n",index);
             my_exit(-1);
     }
     return "";  /// just here to keep the compiler happy.
@@ -88,7 +88,7 @@ const char* unicorn_arch_name_from_int(uint64_t unicorn_arch_int)
             return ucc_arch[i].name;
         }
     }
-    fprintf(stderr, "Error. %llu is not a valid architecture constant in unicorn.\n",unicorn_arch_int);
+    fprintf(stderr, "Error. %lu is not a valid architecture constant in unicorn.\n",unicorn_arch_int);
     my_exit(-1);
     return "Whoops"; //for compiler
 
@@ -125,7 +125,7 @@ const char* unicorn_mode_name_from_int(uint64_t unicorn_mode_int)
             return ucc_mode[i].name;
         }
     }
-    fprintf(stderr, "Error. %llu is not a valid mode constant in unicorn.\n",unicorn_mode_int);
+    fprintf(stderr, "Error. %lu is not a valid mode constant in unicorn.\n",unicorn_mode_int);
     my_exit(-1);
     return "Whoops"; //for compiler
 }
@@ -161,7 +161,7 @@ const char* capstone_mode_name_from_int(uint64_t capstone_mode_int)
             return cc_mode[i].name;
         }
     }
-    fprintf(stderr, "Error. %llu is not a valid mode constant in capstone.\n",capstone_mode_int);
+    fprintf(stderr, "Error. %lu is not a valid mode constant in capstone.\n",capstone_mode_int);
     my_exit(-1);
     return "Whoops"; //for compiler
 }
@@ -196,7 +196,7 @@ const char* capstone_arch_name_from_int(uint64_t capstone_arch_int)
             return cc_arch[i].name;
         }
     }
-    fprintf(stderr, "Error. %llu is not a valid arch constant in capstone.\n",capstone_arch_int);
+    fprintf(stderr, "Error. %lu is not a valid arch constant in capstone.\n",capstone_arch_int);
     my_exit(-1);
     return "Whoops"; //for compiler
 }
@@ -249,7 +249,7 @@ uint64_t uc_reg_from_int(uint64_t index)
         case UC_ARCH_ARM64:    
             return uc_reg_from_int_arm64(index);
         default:
-            fprintf(stderr, "Error. Cannot find register for architecture: %llu.\n",index);
+            fprintf(stderr, "Error. Cannot find register for architecture: %lu.\n",index);
             my_exit(-1);
     }
     return 666;  /// just here to keep the compiler happy.
