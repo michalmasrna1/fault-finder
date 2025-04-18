@@ -1,0 +1,486 @@
+
+~~~ Run details  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ >> json filename:          demos/sca25519-unprotected/jsons/binary-details.json
+ >> run mode:               fault
+ >> Output directory Name:  demos/sca25519-unprotected/outputs/
+ >> Threads:                1
+ >> fault model filename :  demos/sca25519-unprotected/faultmodels/sca25519-unprotected.txt
+ >> Start from checkpoint:  Yes
+ >> Checkpoints:            1
+ >> Max instructions:       1000000
+ >> Stop on equivalence:    No
+ >> Time it:                No
+ >> Display disassembly:    Yes
+ >> Note: No 'stack start' - automatically setting it to: 0x8200000
+ >> Note: No patched instructions.
+WARNING: We are not checking the return value from set cpu model, because it errors on Tricore for some reason
+
+~~~ FAULTS TO EMULATE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fault: 1-3
+  Instruction Pointer 
+    Opcode filter: ALL 
+	Lifespan: 0 
+	  SKIP operation. 
+		
+
+~~~~ Running the program once to count the instructions ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ >> Total instructions run:   502736
+ >> Time to run:              748940661 ns 
+ >> Time per instruction:     1489 ns 
+
+~~~~ Running to store all the instructions~~~~~~~~~~
+ >> Total memory needed: 71.10 MB.
+ >> If this fails - consider setting 'number of checkpoints' to a lower number than: 1.
+ >> Total number of checkpoints created: 1 (requested: 1). 
+ >> Saved a checkpoint: 0x80001b0. Count: 1
+
+~~~~~~~~~~~~~~~~~~ Print Stats  ~~~~~~~~~~~~~~~~~~~~~~
+ >> Binary file under test:      demos/sca25519-unprotected/bins/main.elf
+
+ >> Start faults at address:     0x080001b0
+ >> End faults at address:       0x080001b8
+
+ >> Printing usage of registers: 
+	(LR):	  102730   		 
+	(PC):	    2566   		 
+	(SP):	   56362   		 
+	(D0):	    1533   		 
+	(D2):	       6   		 
+	(D3):	      50   		 
+	(D5):	      99   		 
+	(D6):	       1   		 
+	(D7):	      49   		 
+	(D8):	     258   		 
+	(D20):	       5   		 
+	(R0):	  103235   		 
+	(R1):	   98082   		 
+	(R2):	  100574   		 
+	(R3):	  111877   		 
+	(R4):	   71942   		 
+	(R5):	   89094   		 
+	(R6):	   69952   		 
+	(R7):	  101347   		 
+	(R8):	   73352   		 
+	(SB):	  119026   		 
+	(SL):	   65627   		 
+	(FP):	   53807   		 
+	(IP):	   85404   		 
+Checkpoint 1 address: 0x80001b1
+Directory for results: demos/sca25519-unprotected/outputs/
+Thread 0 created.
+WARNING: We are not checking the return value from set cpu model, because it errors on Tricore for some reason
+==1== Thread 2:
+==1== Invalid write of size 8
+==1==    at 0x485293B: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0139A: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6b039e0 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653C4: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x4852943: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0139A: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6b039e8 is 8 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653C4: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x485294B: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0139A: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6b039f0 is 16 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653C4: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x4852953: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0139A: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6b039f8 is 24 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653C4: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 2
+==1==    at 0x48529E3: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D013AA: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6bdbd60 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01750: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653D8: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x485293B: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D013BA: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6bdbdc0 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653EC: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x4852943: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D013BA: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6bdbdc8 is 8 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653EC: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x485294B: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D013BA: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6bdbdd0 is 16 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653EC: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid write of size 8
+==1==    at 0x4852953: memmove (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D013BA: uc_arm_context_restore (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1216C6: my_uc_context_restore (unicorn_engine.c:60)
+==1==    by 0x1218A2: uc_restore_from_checkpoint (unicorn_engine.c:106)
+==1==    by 0x126F22: hook_code_start_address (unicorn_hooks_std.c:106)
+==1==    by 0x4C39084: helper_uc_tracecode (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x59C8712A: ???
+==1==    by 0x4C38F5F: ??? (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x3: ???
+==1==    by 0x47C084AF: ???
+==1==    by 0x4C3BC02: g_hash_table_lookup (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D3617C: tcg_gen_callN_arm (in /usr/local/lib/libunicorn.so.2)
+==1==  Address 0x6bdbdd8 is 24 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653EC: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid free() / delete / delete[] / realloc()
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11F6C2: get_on_with_it (run.c:837)
+==1==    by 0x11F9A4: run_the_actual_fault (run.c:890)
+==1==    by 0x11E785: fault_it_thread (run.c:524)
+==1==    by 0x668BAC2: start_thread (pthread_create.c:442)
+==1==    by 0x671CA03: clone (clone.S:100)
+==1==  Address 0x6b039e0 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01743: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653C4: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid free() / delete / delete[] / realloc()
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01750: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11F6C2: get_on_with_it (run.c:837)
+==1==    by 0x11F9A4: run_the_actual_fault (run.c:890)
+==1==    by 0x11E785: fault_it_thread (run.c:524)
+==1==    by 0x668BAC2: start_thread (pthread_create.c:442)
+==1==    by 0x671CA03: clone (clone.S:100)
+==1==  Address 0x6bdbd60 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D01750: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653D8: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+==1== Invalid free() / delete / delete[] / realloc()
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11F6C2: get_on_with_it (run.c:837)
+==1==    by 0x11F9A4: run_the_actual_fault (run.c:890)
+==1==    by 0x11E785: fault_it_thread (run.c:524)
+==1==    by 0x668BAC2: start_thread (pthread_create.c:442)
+==1==    by 0x671CA03: clone (clone.S:100)
+==1==  Address 0x6bdbdc0 is 0 bytes inside a block of size 32 free'd
+==1==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D0175D: arm_release (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C36AF6: uc_close (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x12436F: my_uc_close (unicorn_engine.c:1010)
+==1==    by 0x11DF98: run_to_write_stats (run.c:362)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1==  Block was alloc'd at
+==1==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==1==    by 0x4D653EC: arm_cpu_realizefn_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D655A3: cpu_arm_init_arm (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4D0143C: arm_cpus_init (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C363C9: uc_init_engine (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x4C37A21: uc_mem_map (in /usr/local/lib/libunicorn.so.2)
+==1==    by 0x1230F5: my_uc_mem_map (unicorn_engine.c:551)
+==1==    by 0x1232E3: uc_engine_open_and_mem_map (unicorn_engine.c:594)
+==1==    by 0x123918: my_uc_engine_setup (unicorn_engine.c:708)
+==1==    by 0x11DED4: run_to_write_stats (run.c:350)
+==1==    by 0x11EC6C: fault_it (run.c:634)
+==1==    by 0x12BB3B: main (faultfinder.c:93)
+==1== 
+
+Thread 0 rejoined.
+Finished.

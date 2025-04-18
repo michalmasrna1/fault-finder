@@ -1,0 +1,5 @@
+The buggy memory is allocated as the stack of some run.
+I suspect something is incorrect with how the list of line_details_t is handled
+    - it is passed from the run_to_write_stats inside the context, but the context is no longer used
+
+I think line_details simply has to be a separate object and not a part of the context or run_state.

@@ -24,7 +24,6 @@ void initialise_consume_context(consume_context_t *context,instruction_range_fau
     if (context->current_instruction_range_fault != NULL)
     {
         context->instruction=context->current_instruction_range_fault->instruction_start;
-        context->line_details_array=current_run_state->line_details_array;
         context->start_from_checkpoint=current_run_state->start_from_checkpoint;
         context->stop_on_equivalence=current_run_state->stop_on_equivalence;
         context->display_disassembly=current_run_state->display_disassembly;
@@ -32,6 +31,29 @@ void initialise_consume_context(consume_context_t *context,instruction_range_fau
         context->max_instructions=current_run_state->max_instructions;
         context->total_num_checkpoints=current_run_state->total_num_checkpoints;
         context->total_instrs=current_run_state->total_instruction_count;
+
+        // Allocate and copy the entire line_details_array object
+        if (current_run_state->line_details_array != NULL)
+        {
+            // copied from run_to_write_stats
+            uint64_t total_instrs=current_run_state->total_instruction_count;
+            size_t total_size = (total_instrs+2) * sizeof(line_details_t);
+            context->line_details_array=my_malloc(total_size, "line_details_array");
+            if (context->line_details_array != NULL)
+            {
+                memcpy(context->line_details_array, current_run_state->line_details_array, total_size);
+            }
+            else
+            {
+                fprintf(stderr, "Failed to allocate memory for line_details_array blah blah\n");
+                exit(EXIT_FAILURE);
+            }
+        }
+        else
+        {
+            printf("Problem A\n");
+            context->line_details_array = NULL;
+        }
     }
 
     // printf("context->current_instruction_range_fault.instruction_start: %li \n",context->current_instruction_range_fault->instruction_start);

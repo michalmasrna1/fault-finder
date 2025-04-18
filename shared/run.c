@@ -359,7 +359,8 @@ void run_to_write_stats(current_run_state_t *current_run_state)
     my_uc_hook_del("hk_stats",uc_stats, hk_stats, current_run_state);
     print_stats(current_run_state);
     print_checkpoints(current_run_state);
-  //  my_uc_close(uc_stats,current_run_state,"uc_stats"); // ARGHHGHGHGHHGHGH - something gets double free'd in here.
+    // we can't free here, because we need the line_details_array for the rest of the run.
+    // my_uc_close(uc_stats,current_run_state,"uc_stats"); // ARGHHGHGHGHHGHGH - something gets double free'd in here.
 }
 
 
@@ -474,7 +475,29 @@ void *fault_it_thread(void *user_data)
     current_run_state_init(&current_run_state);
     current_run_state.run_mode=eFAULT_rm;
     
-    current_run_state.line_details_array=context->line_details_array;
+    current_run_state.line_details_array=context->line_details_array;  // Here maybe we want a hard copy too?
+    // // Allocate and copy the entire line_details_array object
+    // if (context->line_details_array != NULL)
+    // {
+    //     // copied from run_to_write_stats
+    //     uint64_t total_instrs=context->total_instrs;
+    //     size_t total_size = (total_instrs+2) * sizeof(line_details_t);
+    //     current_run_state.line_details_array=my_malloc(total_size, "line_details_array");
+    //     if (current_run_state.line_details_array != NULL)
+    //     {
+    //         memcpy(current_run_state.line_details_array, context->line_details_array, total_size);
+    //     }
+    //     else
+    //     {
+    //         fprintf(stderr, "Failed to allocate memory for line_details_array blah blah\n");
+    //         exit(EXIT_FAILURE);
+    //     }
+    // }
+    // else
+    // {
+    //     printf("Problem B\n");
+    //     current_run_state.line_details_array = NULL;
+    // }
     current_run_state.start_from_checkpoint=context->start_from_checkpoint;
     current_run_state.stop_on_equivalence=context->stop_on_equivalence;
     current_run_state.total_num_checkpoints=context->total_num_checkpoints;

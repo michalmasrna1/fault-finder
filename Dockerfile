@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     libjson-c-dev \
     libcapstone-dev \
+    valgrind \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /root/.ssh/ && ssh-keyscan github.com >> /root/.ssh/known_hosts
@@ -35,5 +36,6 @@ WORKDIR /usr/src/faultfinder
 # RUN make debug
 RUN make
 
-ENTRYPOINT ["./faultfinder"]
+ENTRYPOINT ["valgrind", "--quiet", "--undef-value-errors=no", "--leak-check=no", "./faultfinder"]
+# ENTRYPOINT ["./faultfinder"]
 #ENTRYPOINT ["bash"]
