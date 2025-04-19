@@ -19,7 +19,7 @@
         }
     ],
     "stack address" : "0x08100000",
-    "stack size"    : "0x00100000",
+    "stack size"    : "0x00000400",
     "code offset"   : "0x00010000",
     "code start"    : "0x000001ad",
     "code end"      : "0x000001b8",
@@ -41,7 +41,7 @@
         // },
         {   
             "location"      : "fixed address",
-            "address"       : "0x81fffd8",
+            "address"       : "0x81003d8",
             "length"        : "0x20",
             "offset"        : ""
         }
