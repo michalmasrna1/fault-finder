@@ -6,3 +6,10 @@ Instructions: 1-677672
         Op_codes: ALL
             Lifespan: 0
                 Operation: SKIP
+    # Not sure if these are really all the registers, in disassembly there is also r9, which maybe corresponds to d0 in the unicorn output, maybe there are also others that we want to fault
+    Registers: r0, r1, r2, r3, r4, r5, r6, r7, r8, d0
+        Op_codes: ALL
+            Lifespan: 0
+                Operation: SET
+                    Masks: 0,e22dfaa6
+                    # e22dfaa6 is the last 4 bytes of sha256 hash of the string "a random value not controlled by or known to the attacker"
