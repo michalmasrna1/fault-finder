@@ -941,8 +941,8 @@ Disassembly of section .text:
  8000c20:	f003 0307 	and.w	r3, r3, #7
  8000c24:	f811 1c28 	ldrb.w	r1, [r1, #-40]
  8000c28:	fa41 f303 	asr.w	r3, r1, r3
- 8000c2c:	f003 0301 	and.w	r3, r3, #1
- 8000c30:	405a      	eors	r2, r3
+ 8000c2c:	f003 0301 	and.w	r3, r3, #1 ; c-safe error directly on key bits
+ 8000c30:	405a      	eors	r2, r3 ; c-safe error directly on key bits
  8000c32:	a92c      	add	r1, sp, #176	; 0xb0
  8000c34:	a81c      	add	r0, sp, #112	; 0x70
  8000c36:	f88d 3134 	strb.w	r3, [sp, #308]	; 0x134
@@ -1365,7 +1365,7 @@ Disassembly of section .text:
  800123a:	3b01      	subs	r3, #1
  800123c:	2b00      	cmp	r3, #0
  800123e:	934c      	str	r3, [sp, #304]	; 0x130
- 8001240:	f6bf acea 	bge.w	8000c18 <crypto_scalarmult_curve25519+0x68>
+ 8001240:	f6bf acea 	bge.w	8000c18 <crypto_scalarmult_curve25519+0x68>  ; Computational loop
  8001244:	a92c      	add	r1, sp, #176	; 0xb0
  8001246:	a81c      	add	r0, sp, #112	; 0x70
  8001248:	9203      	str	r2, [sp, #12]
