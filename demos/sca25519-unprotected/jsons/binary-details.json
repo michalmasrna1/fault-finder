@@ -33,96 +33,12 @@
     ],
     "outputs"    : 
     [
-        // {   
-        //     "location"      : "fixed address",
-        //     "address"       : "0x081ffd00",
-        //     "length"        : "0x00000300",
-        //     "offset"        : ""
-        // },
         {   
             "location"      : "fixed address",
             "address"       : "0x81003d8",
             "length"        : "0x20",
             "offset"        : ""
         }
-        // {   
-        //     "location"      : "fixed address",
-        //     "address"       : "0x81fff88",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {   
-        //     "location"      : "fixed address",
-        //     "address"       : "0x080031c8",
-        //     "length"        : "0x00000020",
-        //     "offset"        : ""
-        // },
-        // {   
-        //     "location"      : "fixed address",
-        //     "address"       : "0x800a3b4",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R0",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R1",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R2",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R3",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R4",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R5",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R6",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R7",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "R8",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // },
-        // {
-        //     "location"      : "register",
-        //     "register"      : "sp",
-        //     "length"        : "0x20",
-        //     "offset"        : ""
-        // }
     ],
     "skips":
     [
