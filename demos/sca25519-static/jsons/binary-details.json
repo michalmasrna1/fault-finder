@@ -1,0 +1,47 @@
+{
+    "binary filename" : "demos/sca25519-static/bins/main.elf",
+    "cpu":"CORTEX_M4",
+    "unicorn arch"    :"arm",
+    "unicorn mode"    :"thumb",
+    "capstone arch"   :"arm",
+    "capstone mode"   :"thumb",
+    "memory address"  :"0x08000000",
+    "memory size"     :"0x00100000",
+    "other memory"    :
+    [
+        {
+            "address": "0x00000000",
+            "size"   : "0x00008000"
+        },
+        {
+            "address": "0x20000000",
+            "size"   : "0x00008000",
+            "offset" : "0x20000"
+        }
+    ],
+    "stack address" : "0x08100000",
+    "stack size"    : "0x00000400",
+    "code offset"   : "0x00010000",
+    "code start"    : "0x000001ad",
+    "code end"      : "0x00000262",
+    "fault start"   : "0x0000025e",
+    "fault end"     : "0x00000262",
+    "set memory"    : 
+    [
+    ],
+    "set registers"   :
+    [
+    ],
+    "outputs"    : 
+    [
+        {   
+            "location"      : "fixed address",
+            "address"       : "0x81003c0",
+            "length"        : "0x20",
+            "offset"        : ""
+        }
+    ],
+    "skips": [],
+    "timeout":"0",
+    "filter results": "no"
+}   

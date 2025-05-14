@@ -1,0 +1,13 @@
+{
+    "binary json filename"  : "demos/sca25519-static/jsons/binary-details.json",
+    "mode"                  : "fault",
+    "output directory name" : "demos/sca25519-static/outputs/",
+    "threads"               : "8",
+    "fault model filename"  : "demos/sca25519-static/faultmodels/sca25519-static.txt",
+    "checkpoints"           : "no",
+    "number of checkpoints" : "notused",
+    "equivalents"           : "no",
+    "timeit"                : "no",
+    "display disassembly"   : "yes",
+    "max instructions"      : "2500000"
+}   
