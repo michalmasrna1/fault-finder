@@ -1,5 +1,5 @@
 {
-    "binary filename" : "demos/sca25519-unprotected/bins/original.elf",
+    "binary filename" : "demos/sca25519-unprotected/bins/main.elf",
     "cpu":"CORTEX_M4",
     "unicorn arch"    :"arm",
     "unicorn mode"    :"thumb",
@@ -27,6 +27,12 @@
     "fault end"     : "0x000001b8",
     "set memory"    : 
     [
+        {
+            "type"      : "address",
+            "address"   : "0x080033a8",
+            "format"    : "hex",
+            "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"
+        }
     ],
     "set registers"   :
     [

@@ -31,6 +31,12 @@
     "fault end"     : "0x000001b8",
     "set memory"    : 
     [
+        {
+            "type"      : "address",
+            "address"   : "0x08008c28",
+            "format"    : "hex",
+            "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"
+        }
     ],
     "set registers"   :
     [
