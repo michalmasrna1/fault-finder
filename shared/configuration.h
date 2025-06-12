@@ -18,7 +18,7 @@
     #define MAX_REGISTERS 128
     #define MAX_OP_CODE_STRING_FILTER_SIZE 10
     #define BILLION  1000000000L
-    #define DISPLAY_EVERY 10
+    #define DISPLAY_EVERY 1000
     #define UC_ERR_CHECK(x) _uc_err_check(x, #x)
     #define NO_CHECKPOINT 0xFFFFDEAD
     #define get16bits(d) (*((const uint16_t *) (d)))
