@@ -2,7 +2,7 @@
     "binary json filename"  : "demos/sca25519-unprotected/jsons/binary-details.json",
     "mode"                  : "fault",
     "output directory name" : "demos/sca25519-unprotected/outputs/",
-    "threads"               : "8",
+    "threads"               : "16",
     "fault model filename"  : "demos/sca25519-unprotected/faultmodels/sca25519-unprotected.txt",
     "checkpoints"           : "no",
     "number of checkpoints" : "notused",
