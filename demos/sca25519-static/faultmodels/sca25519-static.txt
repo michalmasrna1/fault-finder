@@ -12,3 +12,8 @@ Instructions: 1-1691515
             Lifespan: 0
                 Operation: SET
                     Masks: 0
+    Instruction:
+        Op_codes: ALL
+            Lifespan: 0
+                Operations: xOR
+                    Masks:1<0<32

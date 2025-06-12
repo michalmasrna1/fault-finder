@@ -972,11 +972,20 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
                                         // LOOPING THROUGH MASKS
                                         for (uint64_t mask_counter=0; mask_counter < current_operation_fault->mask_count; mask_counter++)
                                         {
+                                            uint64_t mask = current_operation_fault->masks[mask_counter];
+                                            uint64_t size = current_run_state->line_details_array[workload.instruction].size;
+                                            if ((mask >> (size*8)) > 0)
+                                            {
+                                                // Because we only flip a single bit in the instruction, we can stop evaluating once,
+                                                // the mask is larger than the size of the instruction and save a lot of executions.
+                                                // This can not be done in general!
+                                                break;
+                                            }
                                             current_run_state->fault_rule.number=0; //Not relevant
                                             current_run_state->fault_rule.opcode_filter_fault=current_opcode_filter_fault->string;
                                             current_run_state->fault_rule.lifespan=current_lifespan_fault->lifespan;
                                             current_run_state->fault_rule.operation=current_operation_fault->operation;
-                                            current_run_state->fault_rule.mask=current_operation_fault->masks[mask_counter];
+                                            current_run_state->fault_rule.mask=mask;
                                             get_on_with_it(code_buffer, code_buffer_size, current_run_state);
                                         }
                                         current_operation_fault=current_operation_fault->next;

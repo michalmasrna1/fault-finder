@@ -486,7 +486,7 @@ uint64_t fault_reg (uint64_t mask, op_t fault_op, uint64_t tmp,uint64_t size)
 
 void fault_instruction (uint64_t mask, op_t fault_op, uint8_t* in,uint8_t* out,uint64_t size, FILE* f)
 {
-    if ((mask >> (size*8)) > 1)
+    if ((mask >> (size*8)) > 1) // This should be > 0
     {
         fprintf_output(f,"Warning - the Mask 0x%" PRIx64 " is larger than the instruction - so some bytes in the mask will be ingored\n",mask);
     }
