@@ -11,5 +11,4 @@ Instructions: 1-502736
         Op_codes: ALL
             Lifespan: 0
                 Operation: SET
-                    Masks: 0,e22dfaa6
-                    # e22dfaa6 is the last 4 bytes of sha256 hash of the string "a random value not controlled by or known to the attacker"
+                    Masks: 0
