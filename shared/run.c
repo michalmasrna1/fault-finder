@@ -359,7 +359,7 @@ void run_to_write_stats(current_run_state_t *current_run_state)
     my_uc_hook_del("hk_stats",uc_stats, hk_stats, current_run_state);
     print_stats(current_run_state);
     print_checkpoints(current_run_state);
-  //  my_uc_close(uc_stats,current_run_state,"uc_stats"); // ARGHHGHGHGHHGHGH - something gets double free'd in here.
+    my_uc_close(uc_stats,current_run_state,"uc_stats"); // ARGHHGHGHGHHGHGH - something gets double free'd in here.
 }
 
 
