@@ -1,0 +1,42 @@
+{
+    "binary filename" : "demos/archie-comparison/bins/minimal.elf",
+    "cpu":"CORTEX_M0",
+    "unicorn arch"    :"arm",
+    "unicorn mode"    :"thumb",
+    "capstone arch"   :"arm",
+    "capstone mode"   :"thumb",
+    "memory address"  :"0x8000000",
+    "memory size"     :"0x0010000",
+    "other memory"    :
+    [
+        {
+            "address"   : "0x20000000",
+            "size"      :     "0x4000"
+        }  
+    ],
+    "stack address" : "0x8100000",
+    "stack size"    : "0x0001000",
+    "code offset"   : "0x0001000",
+    "code start"    : "0x0000075",
+    "code end"      : "0x000006a",
+    "fault start"   : "0x0000074",
+    "fault end"     : "0x000006a",
+    "set memory"    : 
+    [
+    ],
+    "set registers"   :
+    [
+    ],
+    "outputs"    : 
+    [
+        {   
+            "location"      : "fixed address",
+            "address"       : "0x8000000",
+            "length"        : "0x20",
+            "offset"        : ""
+        }
+    ],
+    "skips": [],
+    "timeout":"00",
+    "filter results": "no"
+}   

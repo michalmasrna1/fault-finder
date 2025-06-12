@@ -1,0 +1,5 @@
+Instructions: 1-5000
+    Instruction Pointer:
+        Op_codes: ALL
+            Lifespan: 0
+                Operation: SKIP

@@ -1,0 +1,13 @@
+{
+    "binary json filename"  : "demos/archie-comparison/jsons/binary-details.json",
+    "mode"                  : "fault",
+    "output directory name" : "demos/archie-comparison/outputs/",
+    "threads"               : "16",
+    "fault model filename"  : "demos/archie-comparison/faultmodels/archie-comparison.txt",
+    "checkpoints"           : "no",
+    "number of checkpoints" : "notused",
+    "equivalents"           : "no",
+    "timeit"                : "no",
+    "display disassembly"   : "no",
+    "max instructions"      : "5100"
+}   
