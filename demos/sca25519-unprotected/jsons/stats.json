@@ -1,0 +1,6 @@
+{
+    "binary json filename"  : "demos/sca25519-unprotected/jsons/binary-details.json",
+    "mode"                  : "stats",
+    "timeit"                : "yes",
+    "display disassembly"   : "yes"
+}   
