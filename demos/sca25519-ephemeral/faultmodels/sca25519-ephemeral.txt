@@ -6,8 +6,8 @@ Instructions: 1-677672
         Op_codes: ALL
             Lifespan: 0
                 Operation: SKIP
-    # Not sure if these are really all the registers, in disassembly there is also r9, which maybe corresponds to d0 in the unicorn output, maybe there are also others that we want to fault
-    Registers: r0, r1, r2, r3, r4, r5, r6, r7, r8, d0
+    # Fot the naming aliases see fault-finder/shared/consts/unicorn_consts_arm.c:ARM_REG_ARRAY
+    Registers: r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr
         Op_codes: ALL
             Lifespan: 0
                 Operation: SET
