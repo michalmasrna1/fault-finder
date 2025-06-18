@@ -1,12 +1,12 @@
 ######################################################################
 # 
 ######################################################################
-Instructions: 1-677672
+Instructions: 1-676291
     Instruction Pointer:
         Op_codes: ALL
             Lifespan: 0
                 Operation: SKIP
-    # Fot the naming aliases see fault-finder/shared/consts/unicorn_consts_arm.c:ARM_REG_ARRAY
+    # For the naming aliases see fault-finder/shared/consts/unicorn_consts_arm.c:ARM_REG_ARRAY
     Registers: r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr
         Op_codes: ALL
             Lifespan: 0

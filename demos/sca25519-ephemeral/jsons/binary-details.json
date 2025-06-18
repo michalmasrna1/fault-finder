@@ -1,46 +1,43 @@
 {
-    "binary filename" : "demos/sca25519-ephemeral/bins/main.elf",
+    "binary filename" : "demos/sca25519-ephemeral/bins/eval.elf",
     "cpu":"CORTEX_M4",
     "unicorn arch"    :"arm",
     "unicorn mode"    :"thumb",
     "capstone arch"   :"arm",
     "capstone mode"   :"thumb",
     "memory address"  :"0x08000000",
-    "memory size"     :"0x00100000",
+    "memory size"     :"0x0001f000",
     "other memory"    :
     [
         {
-            "address": "0x00000000",
-            "size"   : "0x00008000"
-        },
-        {
             "address": "0x20000000",
-            "size"   : "0x00008000"
-        },
-        {
-            "address": "0x50000000",
-            "size"   : "0x00080000"
+            "size"   : "0x00000400"
         }
     ],
     "stack address" : "0x08100000",
     "stack size"    : "0x00000400",
-    "code offset"   : "0x00010000",
+    "code offset"   : "0x00001000",
     "code start"    : "0x000001ad",
-    "code end"      : "0x000001b8",
-    "fault start"   : "0x000001b4",
-    "fault end"     : "0x000001b8",
+    "code end"      : "0x000001ba",
+    "fault start"   : "0x000001b6",
+    "fault end"     : "0x000001ba",
     "set memory"    : 
     [
         {
             "type"      : "address",
-            "address"   : "0x08008c28",
+            "address"   : "0x080017d8",
             "format"    : "hex",
             "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x080017f8",
+            "format"    : "hex",
+            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"
+            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"
         }
     ],
-    "set registers"   :
-    [
-    ],
+    "set registers"   :[],
     "outputs"    : 
     [
         {   
@@ -50,7 +47,7 @@
             "offset"        : ""
         }
     ],
-    "skips": [],
+    "skips":[],
     "timeout":"0",
     "filter results": "no"
 }   
