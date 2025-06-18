@@ -13,7 +13,7 @@
     #define printf_output(format, ...)   printf(" >> " format, ## __VA_ARGS__)
     #define fprintf_output(f,format, ...)  fprintf(f," >> " format, ## __VA_ARGS__)
     #define fprintf_errors(f,format, ...)  fprintf(f," >! " format, ## __VA_ARGS__)
-    #define EASE_OUT_POWER 1.25
+    #define EASE_OUT_POWER 1
     #define MAX_FLAGS 40
     #define MAX_REGISTERS 128
     #define MAX_OP_CODE_STRING_FILTER_SIZE 10

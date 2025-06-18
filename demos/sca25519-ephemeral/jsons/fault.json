@@ -4,9 +4,9 @@
     "output directory name" : "demos/sca25519-ephemeral/outputs/",
     "threads"               : "16",
     "fault model filename"  : "demos/sca25519-ephemeral/faultmodels/sca25519-ephemeral.txt",
-    "checkpoints"           : "no",
-    "number of checkpoints" : "notused",
-    "equivalents"           : "no",
+    "checkpoints"           : "yes",
+    "number of checkpoints" : "1500",
+    "equivalents"           : "yes",
     "timeit"                : "no",
     "display disassembly"   : "yes",
     "max instructions"      : "1000000"

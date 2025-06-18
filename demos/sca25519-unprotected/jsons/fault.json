@@ -4,9 +4,9 @@
     "output directory name" : "demos/sca25519-unprotected/outputs/",
     "threads"               : "16",
     "fault model filename"  : "demos/sca25519-unprotected/faultmodels/sca25519-unprotected.txt",
-    "checkpoints"           : "no",
-    "number of checkpoints" : "notused",
-    "equivalents"           : "no",
+    "checkpoints"           : "yes",
+    "number of checkpoints" : "2000",
+    "equivalents"           : "yes",
     "timeit"                : "no",
     "display disassembly"   : "yes",
     "max instructions"      : "1000000"
