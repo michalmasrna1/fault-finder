@@ -1,42 +1,54 @@
 {
-    "binary filename" : "demos/sca25519-static/bins/main.elf",
+    "binary filename" : "demos/sca25519-static/bins/eval.elf",
     "cpu":"CORTEX_M4",
     "unicorn arch"    :"arm",
     "unicorn mode"    :"thumb",
     "capstone arch"   :"arm",
     "capstone mode"   :"thumb",
     "memory address"  :"0x08000000",
-    "memory size"     :"0x00100000",
+    "memory size"     :"0x00028000",
     "other memory"    :
     [
         {
-            "address": "0x00000000",
-            "size"   : "0x00008000"
-        },
-        {
             "address": "0x20000000",
-            "size"   : "0x00008000",
-            "offset" : "0x20000"
+            "size"   : "0x00000400"
         }
     ],
     "stack address" : "0x08100000",
-    "stack size"    : "0x00000400",
-    "code offset"   : "0x00010000",
+    "stack size"    : "0x00000800",
+    "code offset"   : "0x00001000",
     "code start"    : "0x000001ad",
-    "code end"      : "0x00000262",
-    "fault start"   : "0x0000025e",
-    "fault end"     : "0x00000262",
+    "code end"      : "0x00000270",
+    "fault start"   : "0x0000026c",
+    "fault end"     : "0x00000270",
     "set memory"    : 
     [
+        {
+            "type"      : "address",
+            "address"   : "0x08003e80",
+            "format"    : "hex",
+            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x08003ea0",
+            "format"    : "hex",
+            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x08003e5c",
+            "format"    : "hex",
+            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"
+            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"
+        }
     ],
-    "set registers"   :
-    [
-    ],
+    "set registers"   :[],
     "outputs"    : 
     [
         {   
             "location"      : "fixed address",
-            "address"       : "0x81003c0",
+            "address"       : "0x81007b8",
             "length"        : "0x20",
             "offset"        : ""
         }
