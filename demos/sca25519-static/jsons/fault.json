@@ -6,7 +6,7 @@
     "fault model filename"  : "demos/sca25519-static/faultmodels/sca25519-static.txt",
     "checkpoints"           : "yes",
     "number of checkpoints" : "2400",
-    "equivalents"           : "yes",
+    "equivalents"           : "no",
     "timeit"                : "no",
     "display disassembly"   : "yes",
     "max instructions"      : "2000000"
