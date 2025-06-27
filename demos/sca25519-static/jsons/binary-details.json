@@ -23,6 +23,12 @@
     "fault end"     : "0x00000264",
     "set memory"    : 
     [
+        {   
+            "type"          : "address",
+            "address"       : "0x81007c0",
+            "format"        : "hex",
+            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"
+        },
         {
             "type"      : "address",
             "address"   : "0x08003f38",
