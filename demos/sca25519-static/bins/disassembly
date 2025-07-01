@@ -3314,159 +3314,159 @@ Disassembly of section .text:
  8002b4c:	f5ad 7d2d 	sub.w	sp, sp, #692	; 0x2b4
  8002b50:	f04f 34ff 	mov.w	r4, #4294967295	; 0xffffffff
  8002b54:	9407      	str	r4, [sp, #28]
- 8002b56:	2220      	movs	r2, #32
- 8002b58:	2300      	movs	r3, #0
- 8002b5a:	4c6d      	ldr	r4, [pc, #436]	; (8002d10 <crypto_scalarmult_curve25519+0x1c8>)
- 8002b5c:	9105      	str	r1, [sp, #20]
- 8002b5e:	2600      	movs	r6, #0
+ 8002b56:	2600      	movs	r6, #0
+ 8002b58:	4c6d      	ldr	r4, [pc, #436]	; (8002d10 <crypto_scalarmult_curve25519+0x1c8>)
+ 8002b5a:	9105      	str	r1, [sp, #20]
+ 8002b5c:	2220      	movs	r2, #32
+ 8002b5e:	2300      	movs	r3, #0
  8002b60:	4607      	mov	r7, r0
  8002b62:	9608      	str	r6, [sp, #32]
  8002b64:	f7fd fef0 	bl	8000948 <randombytes>
- 8002b68:	f7ff fef6 	bl	8002958 <update_static_key_curve25519>
- 8002b6c:	9905      	ldr	r1, [sp, #20]
- 8002b6e:	f104 0020 	add.w	r0, r4, #32
- 8002b72:	f20d 2587 	addw	r5, sp, #647	; 0x287
- 8002b76:	f814 3f01 	ldrb.w	r3, [r4, #1]!
- 8002b7a:	f805 3f01 	strb.w	r3, [r5, #1]!
- 8002b7e:	aa08      	add	r2, sp, #32
- 8002b80:	4633      	mov	r3, r6
- 8002b82:	6813      	ldr	r3, [r2, #0]
- 8002b84:	f103 0309 	add.w	r3, r3, #9
- 8002b88:	6013      	str	r3, [r2, #0]
- 8002b8a:	42a0      	cmp	r0, r4
- 8002b8c:	d1f3      	bne.n	8002b76 <crypto_scalarmult_curve25519+0x2e>
- 8002b8e:	a872      	add	r0, sp, #456	; 0x1c8
- 8002b90:	f000 fabc 	bl	800310c <fe25519_unpack>
- 8002b94:	a88a      	add	r0, sp, #552	; 0x228
- 8002b96:	f000 fadf 	bl	8003158 <fe25519_setone>
- 8002b9a:	a892      	add	r0, sp, #584	; 0x248
- 8002b9c:	f000 fad2 	bl	8003144 <fe25519_setzero>
- 8002ba0:	a972      	add	r1, sp, #456	; 0x1c8
- 8002ba2:	a87a      	add	r0, sp, #488	; 0x1e8
- 8002ba4:	f000 fac4 	bl	8003130 <fe25519_cpy>
- 8002ba8:	a882      	add	r0, sp, #520	; 0x208
- 8002baa:	f000 fad5 	bl	8003158 <fe25519_setone>
- 8002bae:	ab08      	add	r3, sp, #32
- 8002bb0:	681e      	ldr	r6, [r3, #0]
- 8002bb2:	f106 0609 	add.w	r6, r6, #9
- 8002bb6:	601e      	str	r6, [r3, #0]
- 8002bb8:	4a56      	ldr	r2, [pc, #344]	; (8002d14 <crypto_scalarmult_curve25519+0x1cc>)
- 8002bba:	4c57      	ldr	r4, [pc, #348]	; (8002d18 <crypto_scalarmult_curve25519+0x1d0>)
- 8002bbc:	4b57      	ldr	r3, [pc, #348]	; (8002d1c <crypto_scalarmult_curve25519+0x1d4>)
- 8002bbe:	930e      	str	r3, [sp, #56]	; 0x38
- 8002bc0:	a97a      	add	r1, sp, #488	; 0x1e8
- 8002bc2:	ad82      	add	r5, sp, #520	; 0x208
- 8002bc4:	9109      	str	r1, [sp, #36]	; 0x24
- 8002bc6:	a862      	add	r0, sp, #392	; 0x188
- 8002bc8:	a972      	add	r1, sp, #456	; 0x1c8
- 8002bca:	950b      	str	r5, [sp, #44]	; 0x2c
- 8002bcc:	ad12      	add	r5, sp, #72	; 0x48
- 8002bce:	e9cd 420c 	strd	r4, r2, [sp, #48]	; 0x30
- 8002bd2:	950a      	str	r5, [sp, #40]	; 0x28
- 8002bd4:	f7fd fc02 	bl	80003dc <fe25519_square_asm>
- 8002bd8:	a962      	add	r1, sp, #392	; 0x188
- 8002bda:	a85a      	add	r0, sp, #360	; 0x168
- 8002bdc:	aa72      	add	r2, sp, #456	; 0x1c8
- 8002bde:	f7fd fccb 	bl	8000578 <fe25519_mul_asm>
- 8002be2:	a962      	add	r1, sp, #392	; 0x188
- 8002be4:	4608      	mov	r0, r1
- 8002be6:	4a4e      	ldr	r2, [pc, #312]	; (8002d20 <crypto_scalarmult_curve25519+0x1d8>)
- 8002be8:	f7fd fcc6 	bl	8000578 <fe25519_mul_asm>
- 8002bec:	2201      	movs	r2, #1
- 8002bee:	ab5a      	add	r3, sp, #360	; 0x168
- 8002bf0:	a962      	add	r1, sp, #392	; 0x188
- 8002bf2:	4610      	mov	r0, r2
- 8002bf4:	469e      	mov	lr, r3
- 8002bf6:	f8de 501c 	ldr.w	r5, [lr, #28]
- 8002bfa:	69cc      	ldr	r4, [r1, #28]
- 8002bfc:	4626      	mov	r6, r4
- 8002bfe:	fbe5 5660 	umaal	r5, r6, r5, r0
- 8002c02:	fbe4 5600 	umlal	r5, r6, r4, r0
- 8002c06:	f04f 0413 	mov.w	r4, #19
- 8002c0a:	fb06 f404 	mul.w	r4, r6, r4
- 8002c0e:	f8de 6000 	ldr.w	r6, [lr]
- 8002c12:	f8d1 c000 	ldr.w	ip, [r1]
- 8002c16:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c1a:	601e      	str	r6, [r3, #0]
- 8002c1c:	f8de 4004 	ldr.w	r4, [lr, #4]
- 8002c20:	684e      	ldr	r6, [r1, #4]
- 8002c22:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c26:	605e      	str	r6, [r3, #4]
- 8002c28:	f8de 4008 	ldr.w	r4, [lr, #8]
- 8002c2c:	688e      	ldr	r6, [r1, #8]
- 8002c2e:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c32:	609e      	str	r6, [r3, #8]
- 8002c34:	f8de 400c 	ldr.w	r4, [lr, #12]
- 8002c38:	68ce      	ldr	r6, [r1, #12]
- 8002c3a:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c3e:	60de      	str	r6, [r3, #12]
- 8002c40:	f8de 4010 	ldr.w	r4, [lr, #16]
- 8002c44:	690e      	ldr	r6, [r1, #16]
- 8002c46:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c4a:	611e      	str	r6, [r3, #16]
- 8002c4c:	f8de 4014 	ldr.w	r4, [lr, #20]
- 8002c50:	694e      	ldr	r6, [r1, #20]
- 8002c52:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c56:	615e      	str	r6, [r3, #20]
- 8002c58:	f8de 4018 	ldr.w	r4, [lr, #24]
- 8002c5c:	698e      	ldr	r6, [r1, #24]
- 8002c5e:	fbe0 6c64 	umaal	r6, ip, r0, r4
- 8002c62:	619e      	str	r6, [r3, #24]
- 8002c64:	eb0c 0c55 	add.w	ip, ip, r5, lsr #1
- 8002c68:	f8c3 c01c 	str.w	ip, [r3, #28]
- 8002c6c:	ab5a      	add	r3, sp, #360	; 0x168
- 8002c6e:	a972      	add	r1, sp, #456	; 0x1c8
- 8002c70:	469c      	mov	ip, r3
- 8002c72:	f8dc 401c 	ldr.w	r4, [ip, #28]
- 8002c76:	69c8      	ldr	r0, [r1, #28]
- 8002c78:	4605      	mov	r5, r0
- 8002c7a:	fbe4 4562 	umaal	r4, r5, r4, r2
- 8002c7e:	fbe0 4502 	umlal	r4, r5, r0, r2
- 8002c82:	f04f 0013 	mov.w	r0, #19
- 8002c86:	fb05 f000 	mul.w	r0, r5, r0
- 8002c8a:	f8dc 5000 	ldr.w	r5, [ip]
- 8002c8e:	680e      	ldr	r6, [r1, #0]
- 8002c90:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002c94:	601d      	str	r5, [r3, #0]
- 8002c96:	f8dc 0004 	ldr.w	r0, [ip, #4]
- 8002c9a:	684d      	ldr	r5, [r1, #4]
- 8002c9c:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002ca0:	605d      	str	r5, [r3, #4]
- 8002ca2:	f8dc 0008 	ldr.w	r0, [ip, #8]
- 8002ca6:	688d      	ldr	r5, [r1, #8]
- 8002ca8:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002cac:	609d      	str	r5, [r3, #8]
- 8002cae:	f8dc 000c 	ldr.w	r0, [ip, #12]
- 8002cb2:	68cd      	ldr	r5, [r1, #12]
- 8002cb4:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002cb8:	60dd      	str	r5, [r3, #12]
- 8002cba:	f8dc 0010 	ldr.w	r0, [ip, #16]
- 8002cbe:	690d      	ldr	r5, [r1, #16]
- 8002cc0:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002cc4:	611d      	str	r5, [r3, #16]
- 8002cc6:	f8dc 0014 	ldr.w	r0, [ip, #20]
- 8002cca:	694d      	ldr	r5, [r1, #20]
- 8002ccc:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002cd0:	615d      	str	r5, [r3, #20]
- 8002cd2:	f8dc 0018 	ldr.w	r0, [ip, #24]
- 8002cd6:	698d      	ldr	r5, [r1, #24]
- 8002cd8:	fbe2 5660 	umaal	r5, r6, r2, r0
- 8002cdc:	619d      	str	r5, [r3, #24]
- 8002cde:	eb06 0654 	add.w	r6, r6, r4, lsr #1
- 8002ce2:	61de      	str	r6, [r3, #28]
- 8002ce4:	a95a      	add	r1, sp, #360	; 0x168
- 8002ce6:	a812      	add	r0, sp, #72	; 0x48
- 8002ce8:	f000 fad2 	bl	8003290 <fe25519_squareroot>
- 8002cec:	b1d0      	cbz	r0, 8002d24 <crypto_scalarmult_curve25519+0x1dc>
- 8002cee:	f04f 31ff 	mov.w	r1, #4294967295	; 0xffffffff
- 8002cf2:	2220      	movs	r2, #32
- 8002cf4:	2300      	movs	r3, #0
- 8002cf6:	a87a      	add	r0, sp, #488	; 0x1e8
- 8002cf8:	9107      	str	r1, [sp, #28]
- 8002cfa:	f7fd fe25 	bl	8000948 <randombytes>
- 8002cfe:	4638      	mov	r0, r7
- 8002d00:	a97a      	add	r1, sp, #488	; 0x1e8
- 8002d02:	f000 fa93 	bl	800322c <fe25519_pack>
+ 8002b68:	9905      	ldr	r1, [sp, #20]
+ 8002b6a:	f104 0020 	add.w	r0, r4, #32
+ 8002b6e:	f20d 2587 	addw	r5, sp, #647	; 0x287
+ 8002b72:	f814 3f01 	ldrb.w	r3, [r4, #1]!
+ 8002b76:	f805 3f01 	strb.w	r3, [r5, #1]!
+ 8002b7a:	aa08      	add	r2, sp, #32
+ 8002b7c:	4633      	mov	r3, r6
+ 8002b7e:	6813      	ldr	r3, [r2, #0]
+ 8002b80:	f103 0309 	add.w	r3, r3, #9
+ 8002b84:	6013      	str	r3, [r2, #0]
+ 8002b86:	42a0      	cmp	r0, r4
+ 8002b88:	d1f3      	bne.n	8002b72 <crypto_scalarmult_curve25519+0x2a>
+ 8002b8a:	a872      	add	r0, sp, #456	; 0x1c8
+ 8002b8c:	f000 fabe 	bl	800310c <fe25519_unpack>
+ 8002b90:	a88a      	add	r0, sp, #552	; 0x228
+ 8002b92:	f000 fae1 	bl	8003158 <fe25519_setone>
+ 8002b96:	a892      	add	r0, sp, #584	; 0x248
+ 8002b98:	f000 fad4 	bl	8003144 <fe25519_setzero>
+ 8002b9c:	a972      	add	r1, sp, #456	; 0x1c8
+ 8002b9e:	a87a      	add	r0, sp, #488	; 0x1e8
+ 8002ba0:	f000 fac6 	bl	8003130 <fe25519_cpy>
+ 8002ba4:	a882      	add	r0, sp, #520	; 0x208
+ 8002ba6:	f000 fad7 	bl	8003158 <fe25519_setone>
+ 8002baa:	ab08      	add	r3, sp, #32
+ 8002bac:	681e      	ldr	r6, [r3, #0]
+ 8002bae:	f106 0609 	add.w	r6, r6, #9
+ 8002bb2:	601e      	str	r6, [r3, #0]
+ 8002bb4:	4a57      	ldr	r2, [pc, #348]	; (8002d14 <crypto_scalarmult_curve25519+0x1cc>)
+ 8002bb6:	4c58      	ldr	r4, [pc, #352]	; (8002d18 <crypto_scalarmult_curve25519+0x1d0>)
+ 8002bb8:	4b58      	ldr	r3, [pc, #352]	; (8002d1c <crypto_scalarmult_curve25519+0x1d4>)
+ 8002bba:	930e      	str	r3, [sp, #56]	; 0x38
+ 8002bbc:	a97a      	add	r1, sp, #488	; 0x1e8
+ 8002bbe:	ad82      	add	r5, sp, #520	; 0x208
+ 8002bc0:	9109      	str	r1, [sp, #36]	; 0x24
+ 8002bc2:	a862      	add	r0, sp, #392	; 0x188
+ 8002bc4:	a972      	add	r1, sp, #456	; 0x1c8
+ 8002bc6:	950b      	str	r5, [sp, #44]	; 0x2c
+ 8002bc8:	ad12      	add	r5, sp, #72	; 0x48
+ 8002bca:	e9cd 420c 	strd	r4, r2, [sp, #48]	; 0x30
+ 8002bce:	950a      	str	r5, [sp, #40]	; 0x28
+ 8002bd0:	f7fd fc04 	bl	80003dc <fe25519_square_asm>
+ 8002bd4:	a962      	add	r1, sp, #392	; 0x188
+ 8002bd6:	a85a      	add	r0, sp, #360	; 0x168
+ 8002bd8:	aa72      	add	r2, sp, #456	; 0x1c8
+ 8002bda:	f7fd fccd 	bl	8000578 <fe25519_mul_asm>
+ 8002bde:	a962      	add	r1, sp, #392	; 0x188
+ 8002be0:	4608      	mov	r0, r1
+ 8002be2:	4a4f      	ldr	r2, [pc, #316]	; (8002d20 <crypto_scalarmult_curve25519+0x1d8>)
+ 8002be4:	f7fd fcc8 	bl	8000578 <fe25519_mul_asm>
+ 8002be8:	2201      	movs	r2, #1
+ 8002bea:	ab5a      	add	r3, sp, #360	; 0x168
+ 8002bec:	a962      	add	r1, sp, #392	; 0x188
+ 8002bee:	4610      	mov	r0, r2
+ 8002bf0:	469e      	mov	lr, r3
+ 8002bf2:	f8de 501c 	ldr.w	r5, [lr, #28]
+ 8002bf6:	69cc      	ldr	r4, [r1, #28]
+ 8002bf8:	4626      	mov	r6, r4
+ 8002bfa:	fbe5 5660 	umaal	r5, r6, r5, r0
+ 8002bfe:	fbe4 5600 	umlal	r5, r6, r4, r0
+ 8002c02:	f04f 0413 	mov.w	r4, #19
+ 8002c06:	fb06 f404 	mul.w	r4, r6, r4
+ 8002c0a:	f8de 6000 	ldr.w	r6, [lr]
+ 8002c0e:	f8d1 c000 	ldr.w	ip, [r1]
+ 8002c12:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c16:	601e      	str	r6, [r3, #0]
+ 8002c18:	f8de 4004 	ldr.w	r4, [lr, #4]
+ 8002c1c:	684e      	ldr	r6, [r1, #4]
+ 8002c1e:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c22:	605e      	str	r6, [r3, #4]
+ 8002c24:	f8de 4008 	ldr.w	r4, [lr, #8]
+ 8002c28:	688e      	ldr	r6, [r1, #8]
+ 8002c2a:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c2e:	609e      	str	r6, [r3, #8]
+ 8002c30:	f8de 400c 	ldr.w	r4, [lr, #12]
+ 8002c34:	68ce      	ldr	r6, [r1, #12]
+ 8002c36:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c3a:	60de      	str	r6, [r3, #12]
+ 8002c3c:	f8de 4010 	ldr.w	r4, [lr, #16]
+ 8002c40:	690e      	ldr	r6, [r1, #16]
+ 8002c42:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c46:	611e      	str	r6, [r3, #16]
+ 8002c48:	f8de 4014 	ldr.w	r4, [lr, #20]
+ 8002c4c:	694e      	ldr	r6, [r1, #20]
+ 8002c4e:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c52:	615e      	str	r6, [r3, #20]
+ 8002c54:	f8de 4018 	ldr.w	r4, [lr, #24]
+ 8002c58:	698e      	ldr	r6, [r1, #24]
+ 8002c5a:	fbe0 6c64 	umaal	r6, ip, r0, r4
+ 8002c5e:	619e      	str	r6, [r3, #24]
+ 8002c60:	eb0c 0c55 	add.w	ip, ip, r5, lsr #1
+ 8002c64:	f8c3 c01c 	str.w	ip, [r3, #28]
+ 8002c68:	ab5a      	add	r3, sp, #360	; 0x168
+ 8002c6a:	a972      	add	r1, sp, #456	; 0x1c8
+ 8002c6c:	469c      	mov	ip, r3
+ 8002c6e:	f8dc 401c 	ldr.w	r4, [ip, #28]
+ 8002c72:	69c8      	ldr	r0, [r1, #28]
+ 8002c74:	4605      	mov	r5, r0
+ 8002c76:	fbe4 4562 	umaal	r4, r5, r4, r2
+ 8002c7a:	fbe0 4502 	umlal	r4, r5, r0, r2
+ 8002c7e:	f04f 0013 	mov.w	r0, #19
+ 8002c82:	fb05 f000 	mul.w	r0, r5, r0
+ 8002c86:	f8dc 5000 	ldr.w	r5, [ip]
+ 8002c8a:	680e      	ldr	r6, [r1, #0]
+ 8002c8c:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002c90:	601d      	str	r5, [r3, #0]
+ 8002c92:	f8dc 0004 	ldr.w	r0, [ip, #4]
+ 8002c96:	684d      	ldr	r5, [r1, #4]
+ 8002c98:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002c9c:	605d      	str	r5, [r3, #4]
+ 8002c9e:	f8dc 0008 	ldr.w	r0, [ip, #8]
+ 8002ca2:	688d      	ldr	r5, [r1, #8]
+ 8002ca4:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002ca8:	609d      	str	r5, [r3, #8]
+ 8002caa:	f8dc 000c 	ldr.w	r0, [ip, #12]
+ 8002cae:	68cd      	ldr	r5, [r1, #12]
+ 8002cb0:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002cb4:	60dd      	str	r5, [r3, #12]
+ 8002cb6:	f8dc 0010 	ldr.w	r0, [ip, #16]
+ 8002cba:	690d      	ldr	r5, [r1, #16]
+ 8002cbc:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002cc0:	611d      	str	r5, [r3, #16]
+ 8002cc2:	f8dc 0014 	ldr.w	r0, [ip, #20]
+ 8002cc6:	694d      	ldr	r5, [r1, #20]
+ 8002cc8:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002ccc:	615d      	str	r5, [r3, #20]
+ 8002cce:	f8dc 0018 	ldr.w	r0, [ip, #24]
+ 8002cd2:	698d      	ldr	r5, [r1, #24]
+ 8002cd4:	fbe2 5660 	umaal	r5, r6, r2, r0
+ 8002cd8:	619d      	str	r5, [r3, #24]
+ 8002cda:	eb06 0654 	add.w	r6, r6, r4, lsr #1
+ 8002cde:	61de      	str	r6, [r3, #28]
+ 8002ce0:	a95a      	add	r1, sp, #360	; 0x168
+ 8002ce2:	a812      	add	r0, sp, #72	; 0x48
+ 8002ce4:	f000 fad4 	bl	8003290 <fe25519_squareroot>
+ 8002ce8:	b1e0      	cbz	r0, 8002d24 <crypto_scalarmult_curve25519+0x1dc>
+ 8002cea:	f04f 31ff 	mov.w	r1, #4294967295	; 0xffffffff
+ 8002cee:	2220      	movs	r2, #32
+ 8002cf0:	2300      	movs	r3, #0
+ 8002cf2:	a87a      	add	r0, sp, #488	; 0x1e8
+ 8002cf4:	9107      	str	r1, [sp, #28]
+ 8002cf6:	f7fd fe27 	bl	8000948 <randombytes>
+ 8002cfa:	4638      	mov	r0, r7
+ 8002cfc:	a97a      	add	r1, sp, #488	; 0x1e8
+ 8002cfe:	f000 fa95 	bl	800322c <fe25519_pack>
+ 8002d02:	f7ff fe29 	bl	8002958 <update_static_key_curve25519>
  8002d06:	9807      	ldr	r0, [sp, #28]
  8002d08:	f50d 7d2d 	add.w	sp, sp, #692	; 0x2b4
  8002d0c:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
@@ -3853,9 +3853,9 @@ Disassembly of section .text:
  80030ee:	9a08      	ldr	r2, [sp, #32]
  80030f0:	f640 63da 	movw	r3, #3802	; 0xeda
  80030f4:	429a      	cmp	r2, r3
- 80030f6:	f47f adfa 	bne.w	8002cee <crypto_scalarmult_curve25519+0x1a6>
+ 80030f6:	f47f adf8 	bne.w	8002cea <crypto_scalarmult_curve25519+0x1a2>
  80030fa:	9107      	str	r1, [sp, #28]
- 80030fc:	e5ff      	b.n	8002cfe <crypto_scalarmult_curve25519+0x1b6>
+ 80030fc:	e5fd      	b.n	8002cfa <crypto_scalarmult_curve25519+0x1b2>
  80030fe:	bf00      	nop
  8003100:	20000060 	.word	0x20000060
  8003104:	200000a0 	.word	0x200000a0
