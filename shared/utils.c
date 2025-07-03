@@ -218,7 +218,7 @@ void print_fault_rule_no_newline( FILE *fd,fault_rule_t *fault_rule)
                 fault_rule->mask);
             break;
         case instruction_pointer_ft:
-            fprintf(fd,"InstructionPointer. \t\t");
+            fprintf(fd,"InstructionPointer. Number of skipped instructions: %ld. ",fault_rule->mask);
             break;
         case instruction_ft:
             fprintf(fd,"Instruction. Mask: 0x%016lx. ",fault_rule->mask);
