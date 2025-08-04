@@ -1,0 +1,13 @@
+{
+    "binary json filename"  : "demos/micro-ecc/jsons/binary-details.json",
+    "mode"                  : "fault",
+    "output directory name" : "demos/micro-ecc/outputs/",
+    "threads"               : "16",
+    "fault model filename"  : "demos/micro-ecc/faultmodels/micro-ecc.txt",
+    "checkpoints"           : "yes",
+    "number of checkpoints" : "1200",
+    "equivalents"           : "no",
+    "timeit"                : "no",
+    "display disassembly"   : "yes",
+    "max instructions"      : "1000000"
+}   
