@@ -1,0 +1,52 @@
+{
+    "binary filename" : "demos/sweet-b/bins/eval.elf",
+    "cpu":"CORTEX_M4",
+    "unicorn arch"    :"arm",
+    "unicorn mode"    :"thumb",
+    "capstone arch"   :"arm",
+    "capstone mode"   :"thumb",
+    "memory address"  :"0x08000000",
+    "memory size"     :"0x00006000",
+    "other memory"    :[],
+    "stack address" : "0x08100000",
+    "stack size"    : "0x00000800",
+    "code offset"   : "0x00001000",
+    "code start"    : "0x000001ad",
+    "code end"      : "0x000001c8",
+    "fault start"   : "0x000001c4",
+    "fault end"     : "0x000001c8",
+    "set memory"    : 
+    [
+        {   
+            "type"          : "address",
+            "address"       : "0x081005b8",
+            "format"        : "hex",
+            "byte array"    : "700c48f77f56584c5cc632ca65640db91b6bacce3a4df6b42ce7cc838833d287db71e509e3fd9b060ddb20ba5c51dcc5948d46fbf640dfe0441782cab85fa4ac"
+        },
+        {       
+            "type"          : "address",
+            "address"       : "0x08100578",
+            "format"        : "hex",
+            "byte array"    : "7d7dc5f71eb29ddaf80d6214632eeae03d9058af1fb6d22ed80badb62bc1a534"
+        },
+        {   
+            "type"          : "address",
+            "address"       : "0x08100598",
+            "format"        : "hex",
+            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"
+        }
+    ],
+    "set registers"   :[],
+    "outputs"    : 
+    [
+        {   
+            "location"      : "fixed address",
+            "address"       : "0x08100598",
+            "length"        : "0x20",
+            "offset"        : ""
+        }
+    ],
+    "skips":[],
+    "timeout":"0",
+    "filter results": "no"
+}   

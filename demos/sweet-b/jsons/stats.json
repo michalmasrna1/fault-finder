@@ -1,0 +1,6 @@
+{
+    "binary json filename"  : "demos/sweet-b/jsons/binary-details.json",
+    "mode"                  : "stats",
+    "timeit"                : "yes",
+    "display disassembly"   : "yes"
+}   

@@ -1,0 +1,13 @@
+{
+    "binary json filename"  : "demos/sweet-b/jsons/binary-details.json",
+    "mode"                  : "fault",
+    "output directory name" : "demos/sweet-b/outputs/",
+    "threads"               : "16",
+    "fault model filename"  : "demos/sweet-b/faultmodels/sweet-b.txt",
+    "checkpoints"           : "yes",
+    "number of checkpoints" : "1200",
+    "equivalents"           : "no",
+    "timeit"                : "no",
+    "display disassembly"   : "yes",
+    "max instructions"      : "7000000"
+}   
