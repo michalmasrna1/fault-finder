@@ -21,20 +21,20 @@
             "type"          : "address",
             "address"       : "0x81003d8",
             "format"        : "hex",
-            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"
+            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"  // output
         },
         {
             "type"      : "address",
             "address"   : "0x08001020",
             "format"    : "hex",
-            "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"
+            "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"  // key
         },
         {
             "type"      : "address",
             "address"   : "0x08001040",
             "format"    : "hex",
-            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"
-            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"
+            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"  // point
+            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"  // special point
         }
     ],
     "set registers"   :[],
