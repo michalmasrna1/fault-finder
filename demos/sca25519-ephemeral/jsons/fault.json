@@ -5,7 +5,7 @@
     "threads"               : "16",
     "fault model filename"  : "demos/sca25519-ephemeral/faultmodels/sca25519-ephemeral.txt",
     "checkpoints"           : "yes",
-    "number of checkpoints" : "1200",
+    "number of checkpoints" : "1000",
     "equivalents"           : "no",
     "timeit"                : "no",
     "display disassembly"   : "yes",
