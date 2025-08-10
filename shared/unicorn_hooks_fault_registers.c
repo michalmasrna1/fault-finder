@@ -11,7 +11,7 @@
 #include "utils.h"
 #include "fileio.h"
 
-#define FAULT_AFTER false  // Do you do the fault BEFORE or after the isntruction has completed?
+#define FAULT_AFTER true  // Do you do the fault BEFORE or after the isntruction has completed?
 extern bool is_equivalent (uc_engine* uc,current_run_state_t* current_run_state);
 
 void do_the_register_fault(uc_engine* uc, current_run_state_t* current_run_state,uint64_t address,uint64_t size)
