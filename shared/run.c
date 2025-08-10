@@ -922,7 +922,7 @@ void run_the_actual_fault( const char *code_buffer,const size_t code_buffer_size
                                 {
                                     if  (   (current_opcode_filter_fault->string == NULL)
                                             || 
-                                            (strstr(current_run_state->line_details_array[workload.instruction].op_mnemonic,current_opcode_filter_fault->string) != NULL)
+                                            (strcmp(current_run_state->line_details_array[workload.instruction].op_mnemonic,current_opcode_filter_fault->string) == 0)
                                         )
                                     {
                                         lifespan_fault_t *current_lifespan_fault=current_opcode_filter_fault->lifespan_head;
