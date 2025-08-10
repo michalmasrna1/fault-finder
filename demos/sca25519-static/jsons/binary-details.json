@@ -6,7 +6,7 @@
     "capstone arch"   :"arm",
     "capstone mode"   :"thumb",
     "memory address"  :"0x08000000",
-    "memory size"     :"0x00022000",
+    "memory size"     :"0x00022400",
     "other memory"    :
     [
         {
@@ -17,36 +17,48 @@
     "stack address" : "0x08100000",
     "stack size"    : "0x00000800",
     "code offset"   : "0x00010000",
-    "code start"    : "0x000001ad",
-    "code end"      : "0x00000264",
-    "fault start"   : "0x00002b48",
-    "fault end"     : "0x00000264",
+    "code start"    : "0x000001b1",
+    "code end"      : "0x0000024e",
+    "fault start"   : "0x00002af0",
+    "fault end"     : "0x0000024e",
     "set memory"    : 
     [
         {   
             "type"          : "address",
-            "address"       : "0x81007c0",
+            "address"       : "0x8000260",
             "format"        : "hex",
-            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"
+            "byte array"    : "01234567"  // initstate
+        },
+        {   
+            "type"          : "address",
+            "address"       : "0x8000258",
+            "format"        : "hex",
+            "byte array"    : "89abcdef"  // initseq
         },
         {
             "type"      : "address",
-            "address"   : "0x08003f38",
+            "address"   : "0x081007a8",
             "format"    : "hex",
-            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"
+            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"  // public_key
+            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"  // public_key -- small subgroup
         },
         {
             "type"      : "address",
-            "address"   : "0x08003f58",
+            "address"   : "0x08100768",
             "format"    : "hex",
-            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"
+            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"  // ustatic_key
         },
         {
             "type"      : "address",
-            "address"   : "0x08003ff8",
+            "address"   : "0x08100788",
             "format"    : "hex",
-            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"
-            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"
+            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"  // ublindingFactor
+        },
+        {   
+            "type"          : "address",
+            "address"       : "0x81007c8",
+            "format"        : "hex",
+            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"  // result
         }
     ],
     "set registers"   :[],
@@ -54,7 +66,7 @@
     [
         {   
             "location"      : "fixed address",
-            "address"       : "0x81007c0",
+            "address"       : "0x81007c8",
             "length"        : "0x20",
             "offset"        : ""
         }

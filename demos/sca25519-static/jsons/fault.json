@@ -5,7 +5,7 @@
     "threads"               : "16",
     "fault model filename"  : "demos/sca25519-static/faultmodels/sca25519-static.txt",
     "checkpoints"           : "yes",
-    "number of checkpoints" : "2400",
+    "number of checkpoints" : "2500",
     "equivalents"           : "no",
     "timeit"                : "no",
     "display disassembly"   : "yes",
