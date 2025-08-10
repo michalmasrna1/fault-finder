@@ -5,9 +5,9 @@
     "threads"               : "16",
     "fault model filename"  : "demos/micro-ecc/faultmodels/micro-ecc.txt",
     "checkpoints"           : "yes",
-    "number of checkpoints" : "1200",
+    "number of checkpoints" : "12000",
     "equivalents"           : "no",
     "timeit"                : "no",
     "display disassembly"   : "yes",
-    "max instructions"      : "1000000"
+    "max instructions"      : "6000000"
 }   
