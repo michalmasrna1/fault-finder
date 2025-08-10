@@ -5,7 +5,7 @@
     "threads"               : "16",
     "fault model filename"  : "demos/sweet-b/faultmodels/sweet-b.txt",
     "checkpoints"           : "yes",
-    "number of checkpoints" : "1200",
+    "number of checkpoints" : "23000",
     "equivalents"           : "no",
     "timeit"                : "no",
     "display disassembly"   : "yes",
