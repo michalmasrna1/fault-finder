@@ -884,7 +884,7 @@ Disassembly of section .text:
  8000a98:	4630      	mov	r0, r6
  8000a9a:	b011      	add	sp, #68	; 0x44
  8000a9c:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
- 8000aa0:	f8d4 610c 	ldr.w	r6, [r4, #268]	; 0x10c
+ 8000aa0:	f8d4 610c 	ldr.w	r6, [r4, #268]	; 0x10c ; case SB_SW_POINT_MULT_OP_STAGE_LADDER
  8000aa4:	2e00      	cmp	r6, #0
  8000aa6:	d048      	beq.n	8000b3a <sb_sw_point_mult_continue+0x2f2>
  8000aa8:	f104 03a0 	add.w	r3, r4, #160	; 0xa0
@@ -1197,7 +1197,7 @@ Disassembly of section .text:
  8000dee:	4638      	mov	r0, r7
  8000df0:	f7ff fd2a 	bl	8000848 <sb_sw_point_mult_continue>
  8000df4:	2800      	cmp	r0, #0
- 8000df6:	d0e6      	beq.n	8000dc6 <sb_sw_shared_secret+0x36>
+ 8000df6:	d0e6      	beq.n	8000dc6 <sb_sw_shared_secret+0x36> ; computational loop abort (every 16 bits?), sb_sw_lib.c:1967: while (!done);
  8000df8:	462a      	mov	r2, r5
  8000dfa:	4641      	mov	r1, r8
  8000dfc:	4638      	mov	r0, r7
