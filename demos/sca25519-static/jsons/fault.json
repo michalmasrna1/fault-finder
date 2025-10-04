@@ -8,6 +8,6 @@
     "number of checkpoints" : "2500",
     "equivalents"           : "no",
     "timeit"                : "no",
-    "display disassembly"   : "yes",
+    "display disassembly"   : "no",
     "max instructions"      : "2000000"
 }   
