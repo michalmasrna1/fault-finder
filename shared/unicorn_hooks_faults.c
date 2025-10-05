@@ -185,32 +185,33 @@ void hook_memory_invalid(uc_engine *uc, uc_mem_type type, uint64_t address, uint
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
     if (type == UC_MEM_READ_UNMAPPED)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: ʕ•ᴥ•ʔ  Oopsie    - reading from unmapped memory, address: 0x%016lx, value: 0x%" PRIx64 "!!\n", address, value);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else if (type == UC_MEM_WRITE_UNMAPPED)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: /ᐠ.ꞈ.ᐟ\\  Hmm - writing to unmapped memory, address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!! Count %lu Skipping to end.\n", address, value,current_run_state->instruction_count);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else if (type == UC_MEM_FETCH_PROT)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: ¯\\_(ツ)_/¯ Doh - invalid memory fetch from address: 0x%" PRIx64 ", value: 0x%" PRIx64 ". Count %" PRIx64 "!!\n", address, value,current_run_state->instruction_count);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else if (type == UC_MEM_FETCH_UNMAPPED)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: Erm -  fetching from unmapped memory, address: 0x%" PRIx64 ", value: 0x%" PRIx64 ". Count %" PRIx64 "!! Skipping to end.\n", address, value,current_run_state->instruction_count);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else if (type == UC_MEM_WRITE_PROT)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: WOT - write to non-writeable memory from address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!!\n", address, value);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else if (type == UC_MEM_READ_PROT)
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: Huh - read from non-readable memory from address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!!\n", address, value);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
     else
     {
-        fprintf(current_run_state->file_fprintf, " >! Errored: Something something something - strange invalid memory error. Address: 0x%" PRIx64 ", value: 0x%" PRIx64 "!!\n", address, value);
+        fprintf(current_run_state->file_fprintf, "Errored:");
     }
+    fprintf(current_run_state->file_fprintf, "\n");
 
     current_run_state->run_state=ERRORED_rs;
     my_uc_emu_stop(uc);
@@ -224,7 +225,6 @@ void hook_instruction_invalid (uc_engine *uc,void *user_data)
     printf_debug("hook_instruction_invalid. \n");
 #endif
     current_run_state_t *current_run_state=(current_run_state_t *)user_data;
-    fprintf_output(current_run_state->file_fprintf, "Instruction invalid.\n");
     current_run_state->run_state=ERRORED_rs;
     my_uc_emu_stop(uc);
 }

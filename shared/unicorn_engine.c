@@ -81,13 +81,6 @@ void uc_restore_from_checkpoint(uc_engine *uc, current_run_state_t *current_run_
     */
     uint64_t checkpoint_instr=current_run_state->line_details_array[instr].nearest_checkpoint;
     uint64_t address=current_run_state->line_details_array[instr].address;
-    
-    fprintf_output( current_run_state->file_fprintf,
-                    "Restoring check point. Starting from: %lu Address: 0x%" PRIx64 " . (Checkpoint: %lu Address: 0x%" PRIx64 ") \n", 
-                    instr, 
-                    address,
-                    checkpoint_instr,
-                    current_run_state->line_details_array[checkpoint_instr].address);
 
     if (current_run_state->line_details_array[checkpoint_instr].the_context == NULL)
     {
@@ -244,7 +237,7 @@ void print_outputs(uc_engine *uc, current_run_state_t *current_run_state)
             err=uc_mem_read(uc, tmp_address, (void*)tmp_output, len);
             if (err == UC_ERR_OK)
             {
-                fprintf(f," >>> Output from address (0x%08lx): ", tmp_address);
+                fprintf(f,"Output: ", tmp_address);
                 phex(f, tmp_output,len);
             }
             else
@@ -290,9 +283,6 @@ void uc_engine_set_memory_inputs(uc_engine *uc, current_run_state_t *current_run
         if (binary_file_details->set_memory[i].type == address_memory)
         {
             new_address=binary_file_details->set_memory[i].address;
-            fprintf_output(fd, "Writing memory input #%lu directly to address: 0x%016lx: ", i,new_address);
-            phex(fd,binary_file_details->set_memory[i].byte_array, binary_file_details->set_memory[i].length);
-
         }
         else
         {
@@ -796,7 +786,6 @@ void my_uc_engine_start(uc_engine *uc, current_run_state_t *current_run_state, u
                        max_instructions);
     if (err)
     {
-        fprintf_errors(current_run_state->file_fprintf, "Failed on uc_emu_start() first run with error returned %u: %s.\n", err, uc_strerror(err));
         current_run_state->run_state=ERRORED_rs;
     }
 
@@ -813,7 +802,6 @@ void my_uc_engine_start(uc_engine *uc, current_run_state_t *current_run_state, u
 
         if (err)
         {
-            fprintf_errors(current_run_state->file_fprintf, "Failed on uc_emu_start() restart with error returned %u: %s.\n", err, uc_strerror(err));
             current_run_state->run_state=ERRORED_rs;
         }
     }

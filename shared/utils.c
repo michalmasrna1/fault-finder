@@ -212,22 +212,20 @@ void print_fault_rule_no_newline( FILE *fd,fault_rule_t *fault_rule)
     switch (fault_rule->target)
     {
         case reg_ft:
-            fprintf(fd,"Register%s. Reg#: %s. Mask: 0x%016lx. ",
+            fprintf(fd,"Register%s. Reg#: %s.",
                 fault_rule->force == true?" [FORCE FAULT]":"", 
-                register_name_from_int(fault_rule->number),
-                fault_rule->mask);
+                register_name_from_int(fault_rule->number));
             break;
         case instruction_pointer_ft:
             fprintf(fd,"InstructionPointer. Number of skipped instructions: %ld. ",fault_rule->mask);
             break;
         case instruction_ft:
-            fprintf(fd,"Instruction. Mask: 0x%016lx. ",fault_rule->mask);
+            fprintf(fd,"Instruction.");
             break;
         default:
             fprintf(stderr, "No valid target specified unable to print fault fule.\n");
             my_exit(-1);
     }           
-    fprintf(fd,"Operation: %s. ", operation_to_string(fault_rule->operation));
 }
 
 void print_fault_rule( FILE *fd,fault_rule_t *fault_rule)

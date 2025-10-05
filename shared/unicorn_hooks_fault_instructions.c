@@ -26,8 +26,7 @@ void do_the_instruction_fault(uc_engine* uc, current_run_state_t* current_run_st
     //read it
     uc_mem_read(uc,address,instruction_original,size);
     uint64_t fault_address=thumb_check_address(address);
-    fprintf_output(current_run_state->file_fprintf, "Fault Address                  :  0x%" PRIx64 "\n",address);
-    fprintf_output(current_run_state->file_fprintf, "Original instruction           :  ");
+    fprintf_output(current_run_state->file_fprintf, "Original instruction: ");
     for (int i=0;i<size;i++)
     {
         fprintf(current_run_state->file_fprintf,"%02x ",instruction_original[i]);
@@ -43,12 +42,12 @@ void do_the_instruction_fault(uc_engine* uc, current_run_state_t* current_run_st
     {
         fprintf(current_run_state->file_fprintf,"\n");
     }
-    fprintf_output(current_run_state->file_fprintf, "Mask                           :  0x%" PRIx64 "\n", this_fault->mask);
+    fprintf_output(current_run_state->file_fprintf, "Mask: 0x%" PRIx64 "\n", this_fault->mask);
 
     //fault it
     fault_instruction(this_fault->mask, this_fault->operation, instruction_original,instruction_new, size,current_run_state->file_fprintf);
     uc_mem_write(uc,fault_address,instruction_new,size);
-    fprintf_output(current_run_state->file_fprintf, "Updated instruction            :  ");
+    fprintf_output(current_run_state->file_fprintf, "Updated instruction: ");
     for (int i=0;i<size;i++)
     {
         fprintf(current_run_state->file_fprintf,"%02x ",instruction_new[i]);

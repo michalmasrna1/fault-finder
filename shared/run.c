@@ -760,11 +760,11 @@ void get_on_with_it(const char *code_buffer, const size_t code_buffer_size, curr
 
     fault_address=thumb_check_address(fault_address);
     // DO NOT TOUCH THIS FORMAT!! It is used by ff-builddatabase.py to put the data into the database
-    fprintf(f, "\n\n\n\n##### Starting new run. ");
-    fprintf(f, "Address: 0x%" PRIx64 ". Hit: %lu. Lifespan: %lu. ",fault_address,hit_count,current_run_state->fault_rule.lifespan.count);
+    fprintf(f,"\n\n\n");
+    fprintf(f, "Address: 0x%" PRIx64 ". Hit: %lu. ",fault_address,hit_count);
     print_fault_rule_no_newline(f,&current_run_state->fault_rule);
-    fprintf(f, " ###\n");
-
+    fprintf(f, "\n");
+    
 
     uc_engine* uc; 
     my_uc_engine_setup(&uc,current_run_state,"get_on_with_it");
@@ -782,40 +782,32 @@ void get_on_with_it(const char *code_buffer, const size_t code_buffer_size, curr
     switch (current_run_state->run_state)
     {
         case END_ADDRESS_AND_FAULTED_rs:
-            fprintf_output(f,"Run result: reached end address after faulting.\n");
             print_outputs(uc, current_run_state);
             break;
         case FAULTED_rs:
-            fprintf_output(f,"Run result: faulted but did not reach end address.\n");
             print_outputs(uc, current_run_state);
             break;
         case HARD_STOP_rs:
-            fprintf_output(f,"Run result: reached a 'hard stop' address.\n");
             print_outputs(uc, current_run_state);
             break;
         case ERRORED_rs:
-            fprintf_output(f,"Run result: fault errored program - last instruction %lu.\n", current_run_state->instruction_count);
+            fprintf_output(f,"Run result: fault errored program.\n");
             print_outputs(uc, current_run_state);
             break;
         case TIMED_OUT_rs:
-            fprintf_output(f,"Run result: timed out - exiting.\n");
             print_outputs(uc, current_run_state);
             break;
         case EQUIVALENT_rs:
-            fprintf_output(f,"Run result: run ended early - equivalence found.\n");
             break;
         case INTERRUPT_rs:
-            fprintf_output(f,"Run result: run ended early - system interrupt occurred.\n");
             break;
         case END_ADDRESS_rs:
-            fprintf_output(f,"Run result: reached end address no fault occurred. Perhaps the registers to fault are not touched in those instructions (or the opcode).\n");
+            fprintf_output(f,"Run result: reached end address no fault occurred.\n");
             break;
         case MAX_INSTRUCTIONS_REACHED_rs:
-            fprintf_output(f,"Run result: max instructions reached- exiting.\n");
             print_outputs(uc, current_run_state);
             break;
         case NONE_rs:
-            fprintf_output(f,"Run result: none.\n");
             break;
 
         default:

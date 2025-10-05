@@ -11,8 +11,8 @@
     #define printf_verbose(format, ...)  printf("verbose: " format, ## __VA_ARGS__)  //used for debuging 
 
     #define printf_output(format, ...)   printf(" >> " format, ## __VA_ARGS__)
-    #define fprintf_output(f,format, ...)  fprintf(f," >> " format, ## __VA_ARGS__)
-    #define fprintf_errors(f,format, ...)  fprintf(f," >! " format, ## __VA_ARGS__)
+    #define fprintf_output(f,format, ...)  fprintf(f,"" format, ## __VA_ARGS__)
+    #define fprintf_errors(f,format, ...)  fprintf(f,"" format, ## __VA_ARGS__)
     #define EASE_OUT_POWER 1
     #define MAX_FLAGS 40
     #define MAX_REGISTERS 128
