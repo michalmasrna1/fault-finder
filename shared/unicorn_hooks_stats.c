@@ -76,8 +76,6 @@ void save_checkpoint(uc_engine *uc,   current_run_state_t* current_run_state, ui
             my_exit(-1);
         }
     }
-
-    printf_output("Saved a checkpoint: 0x%" PRIx64 ". Count: %lu\n",address,num);
 }
 
 void convertToUppercase(char *givenStr)
