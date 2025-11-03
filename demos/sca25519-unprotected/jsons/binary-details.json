@@ -27,7 +27,7 @@
             "type"      : "address",
             "address"   : "0x08100398",
             "format"    : "hex",
-            "byte array": "806574ba6162cd5849305947361635b6e77d7c7a83de38c08074b8c98fd40a43"  // private_key
+            "byte array": "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a"  // private_key
         },
         {
             "type"      : "address",
