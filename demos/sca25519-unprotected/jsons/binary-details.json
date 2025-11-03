@@ -28,6 +28,8 @@
             "address"   : "0x08100398",
             "format"    : "hex",
             "byte array": "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a"  // private_key
+            // "byte array": "88f892f58ce75a82c3e93e8dae4d99ba20b3d078143f66d54e88045ae246d3d5"  // key bits
+            // "byte array": "ddadc7a0d9b20fd796bc6bd8fb18ccef75e6852d416a33801bdd510fb7138680"  // neighboring bits xor
         },
         {
             "type"      : "address",
