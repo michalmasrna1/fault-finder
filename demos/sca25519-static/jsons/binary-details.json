@@ -27,13 +27,13 @@
             "type"          : "address",
             "address"       : "0x8000260",
             "format"        : "hex",
-            "byte array"    : "01234567"  // initstate
+            "byte array"    : "ecc25519"  // initstate
         },
         {   
             "type"          : "address",
             "address"       : "0x8000258",
             "format"        : "hex",
-            "byte array"    : "89abcdef"  // initseq
+            "byte array"    : "ecc25519"  // initseq
         },
         {
             "type"      : "address",
