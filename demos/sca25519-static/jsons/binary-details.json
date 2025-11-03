@@ -46,13 +46,13 @@
             "type"      : "address",
             "address"   : "0x08100768",
             "format"    : "hex",
-            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"  // ustatic_key
+            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"  // ustatic_key TODO: Change to equal to f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254
         },
         {
             "type"      : "address",
             "address"   : "0x08100788",
             "format"    : "hex",
-            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"  // ublindingFactor
+            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"  // ublindingFactor TODO: Change to equal to f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254
         },
         {   
             "type"          : "address",
