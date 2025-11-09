@@ -401,10 +401,10 @@ void goldenrun_full_it (current_run_state_t* current_run_state)
     current_run_state->run_mode=eGOLDENRUN_FULL_rm;
     /** For printing each line  - ADD the hook*/
     uc_hook hk_code_print_instructions; 
-    // my_uc_hook_add("hk_code_print_instructions",uc_golden_full, &hk_code_print_instructions, UC_HOOK_CODE, hook_code_print_instructions, current_run_state,1,0);
+    my_uc_hook_add("hk_code_print_instructions",uc_golden_full, &hk_code_print_instructions, UC_HOOK_CODE, hook_code_print_instructions, current_run_state,1,0);
     my_uc_engine_start(uc_golden_full, current_run_state,0);     /** time one run **/
     /** For printing each line  - DELETE the hook*/
-    // my_uc_hook_del("hk_code_print_instructions",uc_golden_full, hk_code_print_instructions,current_run_state);
+    my_uc_hook_del("hk_code_print_instructions",uc_golden_full, hk_code_print_instructions,current_run_state);
 
 
     printf_output("Total instructions in faulting range:   %lu\n",current_run_state->instruction_count);    

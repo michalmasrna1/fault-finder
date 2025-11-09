@@ -233,72 +233,72 @@ void hook_code_print_debug(uc_engine *uc, uint64_t address, uint64_t size, void 
 
 void hook_code_print_instructions(uc_engine *uc, uint64_t address, uint64_t size, void *user_data)
 {
-    current_run_state_t *current_run_state=(current_run_state_t *)user_data;
+    // current_run_state_t *current_run_state=(current_run_state_t *)user_data;
 
-    #ifdef DEBUG
-        printf_debug("hook_code_print_instructions. Address: %" PRIx64 ". Count: %li\n",address,current_run_state->instruction_count);
-    #endif
+    // #ifdef DEBUG
+    //     printf_debug("hook_code_print_instructions. Address: %" PRIx64 ". Count: %li\n",address,current_run_state->instruction_count);
+    // #endif
 
-    // Print the opcodes and address and counters
-    uint8_t* tmp;
-    tmp=MY_STACK_ALLOC(sizeof(uint8_t)*(size+1));
+    // // Print the opcodes and address and counters
+    // uint8_t* tmp;
+    // tmp=MY_STACK_ALLOC(sizeof(uint8_t)*(size+1));
 
-    // Read the line of code (opcode)
-    if (!uc_mem_read(uc, address, tmp, size))
-    {
-        if (current_run_state->in_fault_range == 1)
-        {
-            fprintf(current_run_state->file_fprintf, "%08lli ",current_run_state->instruction_count);
-            if (current_run_state->address_hit_counter != NULL && current_run_state->run_mode != eCOUNT_INSTRUCTIONS_rm)
-            {
-                if (current_run_state->line_details_array != NULL)
-                {
-                    // Do we ever get here?  yes maybe - if we compile with printinstruction
-                    printf ("hit:%04lli. ", current_run_state->line_details_array[current_run_state->instruction_count].hit_count);
-                }
-                else
-                {
-                    printf ("hit:%04lli. ", address_hit(current_run_state->address_hit_counter,address));
-                }
-            }
-        }
-        else
-        {
-            // no counter or hit count if outside of faulting range.
-            fprintf(current_run_state->file_fprintf, "~~~~~~~~ ");
-        }
-
-
-
-        fprintf(current_run_state->file_fprintf, "0x%08lx ",address);
-        for (int i=0;i<size;i++)
-        {
-            fprintf(current_run_state->file_fprintf,"%02x ", tmp[i]);
-        }
+    // // Read the line of code (opcode)
+    // if (!uc_mem_read(uc, address, tmp, size))
+    // {
+    //     if (current_run_state->in_fault_range == 1)
+    //     {
+    //         fprintf(current_run_state->file_fprintf, "%08lli ",current_run_state->instruction_count);
+    //         if (current_run_state->address_hit_counter != NULL && current_run_state->run_mode != eCOUNT_INSTRUCTIONS_rm)
+    //         {
+    //             if (current_run_state->line_details_array != NULL)
+    //             {
+    //                 // Do we ever get here?  yes maybe - if we compile with printinstruction
+    //                 printf ("hit:%04lli. ", current_run_state->line_details_array[current_run_state->instruction_count].hit_count);
+    //             }
+    //             else
+    //             {
+    //                 printf ("hit:%04lli. ", address_hit(current_run_state->address_hit_counter,address));
+    //             }
+    //         }
+    //     }
+    //     else
+    //     {
+    //         // no counter or hit count if outside of faulting range.
+    //         fprintf(current_run_state->file_fprintf, "~~~~~~~~ ");
+    //     }
 
 
-        if (current_run_state->display_disassembly && binary_file_details->my_cs_arch != MY_CS_ARCH_NONE)
-        {
-            // Can be turned off to save time - although I've not done the time calculations to see if it saves much time
-            // uses capstone to disassemble and print the opcodes
-            disassemble_instruction_and_print(current_run_state->file_fprintf,tmp,size);
-        }
-        else
-        {
-            fprintf(current_run_state->file_fprintf,"\n");
-        }
-    }
-    else
-    {
-        fprintf(stderr,"Unable to read memory at 0x%" PRIx64 "\n",address);
-        my_exit(-1);
-    }
-    /*DEBUGDEBUG*/
-        // print_register_from_name(uc,stdout, "r0");
-        // print_register_from_name(uc,stdout, "r1");
-        // print_register_from_name(uc,stdout, "r2");
-        // print_register_from_name(uc,stdout, "r3");
-        // print_register_from_name(uc,stdout, "r4");
+
+    //     fprintf(current_run_state->file_fprintf, "0x%08lx ",address);
+    //     for (int i=0;i<size;i++)
+    //     {
+    //         fprintf(current_run_state->file_fprintf,"%02x ", tmp[i]);
+    //     }
+
+
+    //     if (current_run_state->display_disassembly && binary_file_details->my_cs_arch != MY_CS_ARCH_NONE)
+    //     {
+    //         // Can be turned off to save time - although I've not done the time calculations to see if it saves much time
+    //         // uses capstone to disassemble and print the opcodes
+    //         disassemble_instruction_and_print(current_run_state->file_fprintf,tmp,size);
+    //     }
+    //     else
+    //     {
+    //         fprintf(current_run_state->file_fprintf,"\n");
+    //     }
+    // }
+    // else
+    // {
+    //     fprintf(stderr,"Unable to read memory at 0x%" PRIx64 "\n",address);
+    //     my_exit(-1);
+    // }
+    // /*DEBUGDEBUG*/
+    //     // print_register_from_name(uc,stdout, "r0");
+    //     // print_register_from_name(uc,stdout, "r1");
+    //     // print_register_from_name(uc,stdout, "r2");
+    //     // print_register_from_name(uc,stdout, "r3");
+    //     // print_register_from_name(uc,stdout, "r4");
 }
 
 void hook_code_print_fault_instructions(uc_engine *uc, uint64_t address, uint64_t size, void *user_data)
