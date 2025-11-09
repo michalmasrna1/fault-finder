@@ -1,7 +1,7 @@
 ######################################################################
 # 
 ######################################################################
-Instructions: 1-682287
+Instructions: 682105-682105
     Instruction Pointer:
         Op_codes: ALL
             Lifespan: 0
@@ -9,6 +9,6 @@ Instructions: 1-682287
                     Masks: 1,2,3
     Instruction:
         Op_codes: ALL
-            Lifespan: 0
+            Lifespan: 1, revert
                 Operations: xOR
                     Masks:1<0<32

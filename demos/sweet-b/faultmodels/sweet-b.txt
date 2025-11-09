@@ -9,6 +9,6 @@ Instructions: 1-6273123
                     Masks: 1,2,3
     Instruction:
         Op_codes: ALL
-            Lifespan: 0
+            Lifespan: 1, revert
                 Operations: xOR
                     Masks:1<0<32
