@@ -1,0 +1,74 @@
+{
+    "binary filename" : "demos/sca25519-ephemeral-hardened/bins/eval.elf",
+    "cpu":"CORTEX_M4",
+    "unicorn arch"    :"arm",
+    "unicorn mode"    :"thumb",
+    "capstone arch"   :"arm",
+    "capstone mode"   :"thumb",
+    "memory address"  :"0x08000000",
+    "memory size"     :"0x00021c00",
+    "other memory"    :
+    [
+        {
+            "address": "0x20000000",
+            "size"   : "0x00000400"
+        }
+    ],
+    "stack address" : "0x08100000",
+    "stack size"    : "0x00000400",
+    "code offset"   : "0x00010000",
+    "code start"    : "0x000001b1",
+    "code end"      : "0x000001ce",
+    "fault start"   : "0x00001068",
+    "fault end"     : "0x000001ce",
+    "set memory"    : 
+    [
+        {   
+            "type"          : "address",
+            "address"       : "0x80001e0",
+            "format"        : "hex",
+            "byte array"    : "ecc25519"  // initstate
+        },
+        
+        {   
+            "type"          : "address",
+            "address"       : "0x80001d8",
+            "format"        : "hex",
+            "byte array"    : "ecc25519"  // initseq
+        },
+        {   
+            "type"          : "address",
+            "address"       : "0x81003d8",
+            "format"        : "hex",
+            "byte array"    : "ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519ecc25519"  // result
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x08100398",
+            "format"    : "hex",
+            // "byte array": "77076d0a7318a57d3c16c17251b26645df4c2f87ebc0992ab177fba51db92c2a"  // private_key
+            "byte array": "88f892f58ce75a82c3e93e8dae4d99ba20b3d078143f66d54e88045ae246d3d5"  // private_key -- key bits
+            // "byte array": "ddadc7a0d9b20fd796bc6bd8fb18ccef75e6852d416a33801bdd510fb7138680"  // private_key -- neighboring bits xor
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x081003b8",
+            "format"    : "hex",
+            "byte array": "0900000000000000000000000000000000000000000000000000000000000000"  // public_key
+            // "byte array": "e0eb7a7c3b41b8ae1656e3faf19fc46ada098deb9c32b1fd866205165f49b800"  // public_key -- small subgroup
+        }
+    ],
+    "set registers"   :[],
+    "outputs"    : 
+    [
+        {   
+            "location"      : "fixed address",
+            "address"       : "0x81003d8",
+            "length"        : "0x20",
+            "offset"        : ""
+        }
+    ],
+    "skips":[],
+    "timeout":"0",
+    "filter results": "no"
+}   

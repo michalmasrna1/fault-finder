@@ -1,0 +1,14 @@
+######################################################################
+# 
+######################################################################
+Instructions: 1-682654
+    Instruction Pointer:
+        Op_codes: ALL
+            Lifespan: 0
+                Operation: SKIP
+                    Masks: 1,2,3
+    Instruction:
+        Op_codes: ALL
+            Lifespan: 1, revert
+                Operations: xOR
+                    Masks:1<0<32
