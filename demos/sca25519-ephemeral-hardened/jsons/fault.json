@@ -1,0 +1,13 @@
+{
+    "binary json filename"  : "demos/sca25519-ephemeral-hardened/jsons/binary-details.json",
+    "mode"                  : "fault",
+    "output directory name" : "demos/sca25519-ephemeral-hardened/outputs/",
+    "threads"               : "16",
+    "fault model filename"  : "demos/sca25519-ephemeral-hardened/faultmodels/sca25519-ephemeral-hardened.txt",
+    "checkpoints"           : "yes",
+    "number of checkpoints" : "1000",
+    "equivalents"           : "no",
+    "timeit"                : "no",
+    "display disassembly"   : "no",
+    "max instructions"      : "1000000"
+}   
