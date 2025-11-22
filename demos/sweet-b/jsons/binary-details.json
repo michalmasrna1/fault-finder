@@ -27,9 +27,12 @@
             "type"          : "address",
             "address"       : "0x08100578",
             "format"        : "hex",
-            "byte array"    : "f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254"  // private_key
-            // "byte array": "0b480083333677ec596051c20ddd401c0b1d7089b406e4b5ef27f6931bb94dab"  // private_key -- key bits
-            // "byte array": "5e1d55d6666322b90c350497588815495e4825dce153b1e0ba72a3c64eec18fe"  // private_key -- neighboring bits xor
+            "byte array": "f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254"  // private_key
+            // will get regularized to f4b7ff7cccc98813a69fae3df222bfe2af916c5cfb41bb85d0aa67f9b47cf395
+            // "byte array": "0b480083333677ec596051c20ddd401e95bfb6bc5575a43e6f8339797b4ccb29"  // private_key -- key bits
+            // will get regularized to 0b480083333677ec596051c20ddd401d506e93a304be447a2f5598064b830c6a
+            // "byte array": ""  // private_key -- neighboring bits xor
+            // will get regularized to 
         },
         {   
             "type"          : "address",
