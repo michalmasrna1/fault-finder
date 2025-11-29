@@ -46,13 +46,31 @@
             "type"      : "address",
             "address"   : "0x08100768",
             "format"    : "hex",
-            "byte array": "1bc79ef8e824b27a9dc59b41635a9c9dab9ed3afa60f34c5a5e0a1c474293a0d"  // ustatic_key TODO: Change to equal to f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254
+            "byte array": "e7d506e036066baf9b422b0e7bdde454bf499fe217c095adfb76c2aaaf04e403"  // ustatic_key
+            // "byte array": "cef148c5fc1cb936b1b887cfb2f0d9d7a7983ccd974ccc6e6aee2954f9c6ce05"  // ustatic_key -- key bits
+            // "byte array": "ee93d2da95e11e68f21bb04581e7978e8eb6a854c1bea2066d0d8e845fbf6e0e"  // ustatic_key -- neighboring bits xor
         },
         {
             "type"      : "address",
             "address"   : "0x08100788",
             "format"    : "hex",
-            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"  // ublindingFactor TODO: Change to equal to f4b7ff7cccc98813a69fae3df222bfe3f4e28f764bf91b4a10d8096ce446b254
+            "byte array": "2309ef5b3246db2f000000000000000000000000000000000000000000000000"  // ublindingFactor
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x08003f58",
+            "format"    : "hex",
+            "byte array": "7e44318bc1aeaf4fa5e2766bd37497a2ab7d537d74aa8877ca03b89b8be3d93f"  // uSx
+            // "byte array": "21459c375f1ff92261dc9587ed0b0018b165e43e086600ecb63f1a851c661b0e"  // uSx -- key bits
+            // "byte array": "96628eb54ad63727533f7913d7aecae8b44023480362ff42b815f748a286bf31"  // uSx -- neighboring bits xor
+        },
+        {
+            "type"      : "address",
+            "address"   : "0x08003f78",
+            "format"    : "hex",
+            "byte array": "5e76aab65f5cbf98352992369f433e8a39ceb137c54d57636c9b8cc66d836b1e"  // uSy
+            // "byte array": "5f2a4666f3a8da14e01699c3e3763ea95fc6840ace112dbcfe44b2e0cce30e76"  // uSy -- key bits
+            // "byte array": "7ed6c257c75edc42fff7bb99550a0030f7cd8590ff0609cdf0981d87e0d98b1a"  // uSy -- neighboring bits xor
         },
         {   
             "type"          : "address",
