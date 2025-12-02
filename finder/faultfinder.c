@@ -89,7 +89,7 @@ int main(int argc, char **argv, char **envp)
         case eFAULT_rm:
         {
             run_list_t* run_list=parse(run_details.fault_model_filename);
-            print_run_list(run_list);
+            // print_run_list(run_list);
             fault_it(&current_run_state,run_list,run_details.threads_num);
             free_run_list(run_list);   
             break;
