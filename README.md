@@ -1,3 +1,7 @@
+# Introduction
+
+This is the fork of FaultFinder used for the (unpublished as of Dec 2025) Master's thesis titled "Simulation-based fault-injection evaluation methodology for cryptolibraries". The original README follows.
+
 # FaultFinder
 
 Welcome to FaultFinder: lightning-fast, multi-architectural fault injection simulation
